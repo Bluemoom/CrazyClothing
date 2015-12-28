@@ -50,13 +50,9 @@ public final class Menu_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <title>CrazyClothing</title>\n");
       out.write("        <link href=\"css/bootstrap.css\" rel='stylesheet' type='text/css' />\n");
-      out.write("        <!-- jQuery (necessary JavaScript plugins) -->\n");
-      out.write("        <script type='text/javascript' src=\"js/jquery-1.11.1.min.js\"></script>\n");
-      out.write("        <!-- Custom Theme files -->\n");
       out.write("        <link href=\"css/style.css\" rel='stylesheet' type='text/css' />\n");
       out.write("        <link href='//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>\n");
       out.write("        <link href='//fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>\n");
-      out.write("        <!-- start menu -->\n");
       out.write("        <link href=\"css/megamenu.css\" rel=\"stylesheet\" type=\"text/css\" media=\"all\" />\n");
       out.write("    </head>\n");
       out.write("    <body>\n");

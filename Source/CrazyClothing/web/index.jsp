@@ -9,9 +9,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Home</title>
     </head>
     <body>
-        <h1>Xin chào phạm hồng thuận</h1>
+        <%@include file="header.jsp"%>
+        <%@include file="Menu.jsp"%>
+        <%@include file="specialCloth.jsp"%>
+        <%@include file="footer.jsp"%>
     </body>
 </html>

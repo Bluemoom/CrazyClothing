@@ -13,22 +13,28 @@ public class Cloth {
     private String clothID;
     private GroupCloth groupCloth;
     private String clothName;
+    private String image;
     private int quantity;
     private String description;
     private double price;
     private int sale;
+    private int satus;
+    private int neww;
 
     public Cloth() {
     }
 
-    public Cloth(String clothID, GroupCloth groupCloth, String clothName, int quantity, String description, double price, int sale) {
+    public Cloth(String clothID, GroupCloth groupCloth, String clothName, String image, int quantity, String description, double price, int sale, int satus, int neww) {
         this.clothID = clothID;
         this.groupCloth = groupCloth;
         this.clothName = clothName;
+        this.image = image;
         this.quantity = quantity;
         this.description = description;
         this.price = price;
         this.sale = sale;
+        this.satus = satus;
+        this.neww = neww;
     }
 
     public String getClothID() {
@@ -53,6 +59,14 @@ public class Cloth {
 
     public void setClothName(String clothName) {
         this.clothName = clothName;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public int getQuantity() {
@@ -86,5 +100,26 @@ public class Cloth {
     public void setSale(int sale) {
         this.sale = sale;
     }
+
+    public int getSatus() {
+        return satus;
+    }
+
+    public void setSatus(int satus) {
+        this.satus = satus;
+    }
+
+    public int getNeww() {
+        return neww;
+    }
+
+    public void setNeww(int neww) {
+        this.neww = neww;
+    }
+
+   
+    
+    
+    
     
 }

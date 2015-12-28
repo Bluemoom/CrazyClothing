@@ -4,6 +4,8 @@
     Author     : sunny
 --%>
 
+<%@page import="model.Cloth"%>
+<%@page import="dao.ClothDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,41 +20,20 @@
     <body>
         <div class="special">
 	<div class="container">
-		<h3>Special Offers</h3>
+		<h4>SẢN PHẨM ĐẶC BIỆT</h4>
 		<div class="specia-top">
 			<ul class="grid_2">
+                            <% ClothDao clothDao = new ClothDao(); %>
+                            <%for(Cloth cloth : clothDao.showSpecialCloth()) {%>
 		<li>
-				<a href="details.html"><img src="images/8.jpg" class="img-responsive" alt=""></a>
+                    <a href="Clothdetail.jsp?ClothID=<%=cloth.getClothID()%>"><img src="<%=cloth.getImage() %>" class="img-responsive" alt=""></a>
 				<div class="special-info grid_1 simpleCart_shelfItem">
-					<h5>Lorem ipsum dolor</h5>
-					<div class="item_add"><span class="item_price"><h6>ONLY $40.00</h6></span></div>
-					<div class="item_add"><span class="item_price"><a href="#">add to cart</a></span></div>
+					<h5><%=cloth.getClothName()%></h5>
+					<div class="item_add"><span class="item_price"><h6><%=cloth.getPrice()%> VNĐ</h6></span></div>
+					<div class="item_add"><span class="item_price"><a href="#">THÊM VÀO GIỎ</a></span></div>
 				</div>
 		</li>
-		<li>
-				<a href="details.html"><img src="images/9.jpg" class="img-responsive" alt=""></a>
-				<div class="special-info grid_1 simpleCart_shelfItem">
-					<h5>Consectetur adipis</h5>
-					<div class="item_add"><span class="item_price"><h6>ONLY $60.00</h6></span></div>
-					<div class="item_add"><span class="item_price"><a href="#">add to cart</a></span></div>
-			</div>
-		</li>
-		<li>
-				<a href="details.html"><img src="images/10.jpg" class="img-responsive" alt=""></a>
-				<div class="special-info grid_1 simpleCart_shelfItem">
-					<h5>Commodo consequat</h5>
-					<div class="item_add"><span class="item_price"><h6>ONLY $14.00</h6></span></div>
-					<div class="item_add"><span class="item_price"><a href="#">add to cart</a></span></div>
-			</div>
-		</li>
-		<li>
-				<a href="details.html"><img src="images/11.jpg" class="img-responsive" alt=""></a>
-				<div class="special-info grid_1 simpleCart_shelfItem">
-					<h5>Voluptate velit</h5>
-					<div class="item_add"><span class="item_price"><h6>ONLY $37.00</h6></span></div>
-					<div class="item_add"><span class="item_price"><a href="#">add to cart</a></span></div>
-				</div>
-		</li>
+                <% } %>
 		<div class="clearfix"> </div>
 	</ul>
 		</div>
