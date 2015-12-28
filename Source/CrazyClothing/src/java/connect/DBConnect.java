@@ -13,6 +13,7 @@ import java.sql.SQLException;
  *
  * @author sunny
  */
+// lớp keestnoois CSDL
 public class DBConnect {
     public static Connection getSQLServerConnection()
           throws SQLException, ClassNotFoundException {
@@ -20,8 +21,8 @@ public class DBConnect {
       String hostName = "localhost";
       String sqlInstanceName = "SQLEXPRESS";
       String database = "CrazyClothing";
-      String userName = "Java";
-      String password = "Thuan1714";
+      String userName = "Mr_Dat_New";
+      String password = "vip1994";
  
       return getSQLServerConnection1(hostName, sqlInstanceName,
               database, userName, password);

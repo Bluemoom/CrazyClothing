@@ -9,6 +9,8 @@ package model;
  *
  * @author sunny
  */
+// mấy cái này giống kiểu khai báo các lớp thực thể giống vs CSDL kiểu như ásp đó
+
 public class Customer {
     private String customerID;
     private String customerName;

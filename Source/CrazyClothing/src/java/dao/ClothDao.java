@@ -20,6 +20,8 @@ import model.GroupCloth;
  *
  * @author sunny
  */
+
+// đây: quan trọng nhất là cái này, cái dao này là chỗ ae mình viết phương thức đổ dữ liệu lên giống như phương thức seachByPrice thì bảo vào ClothDao
 public class ClothDao {
     public List<Cloth> showSpecialCloth() throws ClassNotFoundException
     {
@@ -53,5 +55,8 @@ public class ClothDao {
         }
         return arr;
     }
+    
+    
+
     
 }

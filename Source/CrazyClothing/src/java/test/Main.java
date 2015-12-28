@@ -15,7 +15,7 @@ import java.sql.SQLException;
  */
 public class Main {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        ClothDao gcDao = new ClothDao();
-        System.out.println(gcDao.showSpecialCloth().size());
+        GroupClothDao gcDao = new GroupClothDao();
+        System.out.println(gcDao.showClothByGroup("100001").size());
     }
 }
