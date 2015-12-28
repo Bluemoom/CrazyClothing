@@ -5,10 +5,14 @@
         <group>
             <file>file:/C:/Users/sunny/Desktop/EditCrazyClothing/CrazyClothing/src/java/connect/DBConnect.java</file>
             <file>file:/C:/Users/sunny/Desktop/EditCrazyClothing/CrazyClothing/src/java/model/Order.java</file>
-            <file>file:/C:/Users/sunny/Desktop/EditCrazyClothing/CrazyClothing/src/java/model/GroupCloth.java</file>
+            <file>file:/C:/Users/sunny/Desktop/EditCrazyClothing/CrazyClothing/web/Menu.jsp</file>
             <file>file:/C:/Users/sunny/Desktop/EditCrazyClothing/CrazyClothing/src/java/model/Customer.java</file>
+            <file>file:/C:/Users/sunny/Desktop/EditCrazyClothing/CrazyClothing/src/java/test/Main.java</file>
             <file>file:/C:/Users/sunny/Desktop/EditCrazyClothing/CrazyClothing/src/java/model/Cloth.java</file>
+            <file>file:/C:/Users/sunny/Desktop/EditCrazyClothing/CrazyClothing/src/java/dao/ClothDao.java</file>
             <file>file:/C:/Users/sunny/Desktop/EditCrazyClothing/CrazyClothing/src/java/model/OrderDetail.java</file>
+            <file>file:/C:/Users/sunny/Desktop/EditCrazyClothing/CrazyClothing/web/specialCloth.jsp</file>
+            <file>file:/C:/Users/sunny/Desktop/EditCrazyClothing/CrazyClothing/web/index.jsp</file>
         </group>
     </open-files>
 </project-private>
