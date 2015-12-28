@@ -80,4 +80,28 @@ public class GroupClothDao {
         }
         return arr;
     }
+    
+    public GroupCloth GetGroupCloth(String GroupID) throws SQLException, ClassNotFoundException
+    {
+          GroupCloth temp = new GroupCloth();
+        try
+        {
+        Connection conn = DBConnect.getSQLServerConnection();
+        Statement stmt = null;
+        String srtQuery = "select * from GroupCloth where groupTop is null";
+        stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(srtQuery);
+        while (rs.next()) {           
+            temp.setGroupID(rs.getString("GroupID"));
+            temp.setGroupName(rs.getString("GroupName"));
+            temp.setImage(rs.getString("image"));
+            temp.setGroupTop(rs.getString("GroupTop"));           
+         } conn.close();
+        }
+        catch(SQLException e)
+        {
+            e.getStackTrace();
+        }
+        return temp;
+    }   
 }

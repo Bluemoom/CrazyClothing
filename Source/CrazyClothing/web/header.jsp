@@ -40,7 +40,7 @@
 	<div class="header">
 	<div class="head-t">
 		<div class="logo">
-			<a href="index.html"><img src="images/logo.png" class="img-responsive" alt=""/> </a>
+			<a href="index.html"><img src="images/logo_1.png" class="img-responsive" alt=""/> </a>
 		</div>
 		<!-- start header_right -->
 		<div class="header_right">

@@ -21,7 +21,6 @@ import model.GroupCloth;
  * @author sunny
  */
 
-// đây: quan trọng nhất là cái này, cái dao này là chỗ ae mình viết phương thức đổ dữ liệu lên giống như phương thức seachByPrice thì bảo vào ClothDao
 public class ClothDao {
     public List<Cloth> showSpecialCloth() throws ClassNotFoundException
     {
@@ -56,7 +55,34 @@ public class ClothDao {
         return arr;
     }
     
-    
-
-    
+    public Cloth ShowDetailCloth(String ClothID) throws ClassNotFoundException
+    {       
+        Cloth cloth = new Cloth();
+        try {
+            Connection conn = DBConnect.getSQLServerConnection();           
+            String query="select * from Cloth where ClothID='"+ClothID+"'";
+            Statement st = null;
+            st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while(rs.next())
+            {              
+                cloth.setClothID(rs.getString("ClothID"));
+                GroupCloth temp = new GroupCloth(rs.getString("GroupClothID"),"","","");
+                cloth.setGroupCloth(temp);
+                cloth.setClothName(rs.getString("ClothName"));
+                cloth.setImage(rs.getString("image"));
+                cloth.setDescription(rs.getString("description"));
+                cloth.setQuantity(rs.getInt("quantity"));
+                cloth.setPrice(rs.getDouble("price"));
+                cloth.setSale(rs.getInt("sale"));
+                cloth.setSatus(rs.getInt("status"));
+                cloth.setNeww(rs.getInt("new"));              
+            }
+            conn.close();
+        }
+        catch(SQLException e) {
+            e.printStackTrace();
+        }     
+        return cloth;
+    }
 }

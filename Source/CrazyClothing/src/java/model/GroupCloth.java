@@ -11,7 +11,7 @@ package model;
  */
 public class GroupCloth {
     private String groupID;
-    private String groupName;
+    public String groupName;
     private String image;
     private String groupTop;
 

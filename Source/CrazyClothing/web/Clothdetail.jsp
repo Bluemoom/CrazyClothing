@@ -4,6 +4,11 @@
     Author     : sunny
 --%>
 
+<%@page import="java.text.NumberFormat"%>
+<%@page import="model.GroupCloth"%>
+<%@page import="dao.GroupClothDao"%>
+<%@page import="model.Cloth"%>
+<%@page import="dao.ClothDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,9 +21,16 @@
         <link href='//fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
         <link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
     </head>
-    <body>
+    <body>      
+        <% 
+            ClothDao cl = new ClothDao();                      
+            Cloth cloth = cl.ShowDetailCloth(request.getParameter("ClothID"));  
+            GroupCloth grc = new GroupCloth();
+            NumberFormat nf = NumberFormat.getInstance();
+            nf.setMinimumIntegerDigits(0);
+        %>
         <div class="container">
-<div class="women_main">
+        <div class="women_main">
 	<!-- start content -->
 			<div class="row single">
 				<div class="col-md-9 det">
@@ -43,32 +55,29 @@
 
 							  <ul class="slides">
 								<li data-thumb="images/d1.jpg">
-									<div class="thumb-image"> <img src="images/d1.jpg" data-imagezoom="true" class="img-responsive"> </div>
+                                                                    <div class="thumb-image"> <img src="<%=cloth.getImage()%>" data-imagezoom="true" class="img-responsive"> </div>
 								</li>
 								<li data-thumb="images/d2.jpg">
-									 <div class="thumb-image"> <img src="images/d2.jpg" data-imagezoom="true" class="img-responsive"> </div>
+									 <div class="thumb-image"> <img src="<%=cloth.getImage()%>" data-imagezoom="true" class="img-responsive"> </div>
 								</li>
 								<li data-thumb="images/d3.jpg">
-								   <div class="thumb-image"> <img src="images/d3.jpg" data-imagezoom="true" class="img-responsive"> </div>
+								   <div class="thumb-image"> <img src="<%=cloth.getImage()%>" data-imagezoom="true" class="img-responsive"> </div>
 								</li>
 								<li data-thumb="images/d4.jpg">
-								   <div class="thumb-image"> <img src="images/d4.jpg" data-imagezoom="true" class="img-responsive"> </div>
+								   <div class="thumb-image"> <img src="<%=cloth.getImage()%>" data-imagezoom="true" class="img-responsive"> </div>
 								</li>
 							  </ul>
 							<div class="clearfix"></div>
 						</div>
 					</div>
 				  <div class="desc1 span_3_of_2">
-					<h3>soluta nobis eleifend option</h3>
-					<span class="brand">Nhãn hiệu: <a href="#">Sed do eiusmod </a></span>
+					<h3><%=cloth.getClothName()%></h3>
+                                        <span class="brand">Nhãn hiệu: <a href="ShowGroup.jsp?groupCloth.groupID="><%=cloth.getGroupCloth().groupName%></a></span>
 					<br>
-					<span class="code">Mã sản phẩm: Product 11</span>
-					<p>when an unknown printer took a galley of type and scrambled it to make</p>
+					<span class="code">Mã sản phẩm: <%=cloth.getClothID()%></span>					
 						<div class="price">
 							<span class="text">Giá:</span>
-							<span class="price-new">$110.00</span><span class="price-old">$100.00</span> 
-							<span class="price-tax">Ex Tax: $90.00</span><br>
-							<span class="points"><small>Price in reward points: 400</small></span><br>
+                                                        <span class="price-new"><%=nf.format(cloth.getPrice())%> VNĐ</span>
 						</div>
 					<div class="det_nav1">
 						<h4>Select a size :</h4>
@@ -91,13 +100,13 @@
           	   </div>
           	    <div class="single-bottom1">
 					<h6>Chi tiết sản phẩm</h6>
-					<p class="prod-desc">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option</p>
+					<p class="prod-desc"><%=cloth.getDescription()%></p>
 				</div>
 	       </div>	
 		   <div class="clearfix"></div>		
 	  </div>
 	<!-- end content -->
 </div>
-</div>
+</div>      
     </body>
 </html>
