@@ -88,7 +88,7 @@ public class GroupClothDao {
         {
         Connection conn = DBConnect.getSQLServerConnection();
         Statement stmt = null;
-        String srtQuery = "select * from GroupCloth where groupTop is null";
+        String srtQuery = "select * from GroupCloth where groupID='"+GroupID+"'";
         stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(srtQuery);
         while (rs.next()) {           
