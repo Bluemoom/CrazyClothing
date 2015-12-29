@@ -9,7 +9,7 @@ package model;
  *
  * @author sunny
  */
-public class Cloth {
+public class Cloth implements Comparable<Cloth>{
     private String clothID;
     private GroupCloth groupCloth;
     private String clothName;
@@ -117,9 +117,9 @@ public class Cloth {
         this.neww = neww;
     }
 
-   
-    
-    
-    
-    
+    @Override
+    public int compareTo(Cloth cloth) {
+       return Integer.parseInt(this.clothID) - Integer.parseInt(cloth.clothID);
+    } 
+
 }
