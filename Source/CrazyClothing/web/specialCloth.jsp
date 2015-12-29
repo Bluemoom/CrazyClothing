@@ -26,11 +26,11 @@
                             <% ClothDao clothDao = new ClothDao(); %>
                             <%for(Cloth cloth : clothDao.showSpecialCloth()) {%>
 		<li>
-                    <a href="Clothdetail.jsp?ClothID=<%=cloth.getClothID()%>"><img src="<%=cloth.getImage() %>" class="img-responsive" alt=""></a>
+                    <a href="ShowDetailCloth.jsp?ClothID=<%=cloth.getClothID()%>"><img src="<%=cloth.getImage() %>" class="img-responsive" alt=""></a>
 				<div class="special-info grid_1 simpleCart_shelfItem">
 					<h5><%=cloth.getClothName()%></h5>
 					<div class="item_add"><span class="item_price"><h6><%=cloth.getPrice()%> VNĐ</h6></span></div>
-					<div class="item_add"><span class="item_price"><a href="#">THÊM VÀO GIỎ</a></span></div>
+					<div class="item_add"><span class="item_price"><a href="CardSeverlet?command=Insert&clothID=<%=cloth.getClothID()%>&CardID=<%=System.currentTimeMillis()%>">THÊM VÀO GIỎ</a></span></div>
 				</div>
 		</li>
                 <% } %>

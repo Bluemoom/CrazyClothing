@@ -55,4 +55,23 @@ public class Card {
         }
     }
     
+    public void SubToCard(Cloth cloth, int quantity)
+    {
+        boolean bl = list.containsKey(cloth);
+        if (bl)
+        {
+            int quan= list.get(cloth);
+            quantity = quan - quantity;
+            if (quantity < 0)
+            {
+                list.remove(cloth);
+            }
+            else
+            {
+                list.remove(cloth);
+                list.put(cloth, quantity);
+            }
+        }
+    }
+    
 }

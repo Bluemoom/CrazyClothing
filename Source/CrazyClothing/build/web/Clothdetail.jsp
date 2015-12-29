@@ -4,6 +4,7 @@
     Author     : sunny
 --%>
 
+<%@page import="model.Card"%>
 <%@page import="java.text.NumberFormat"%>
 <%@page import="model.GroupCloth"%>
 <%@page import="dao.GroupClothDao"%>
@@ -20,9 +21,7 @@
         <link href="css/flexslider.css" rel="stylesheet" type="text/css"/>
         <link href='//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
-        <link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
-        <script src="js/imagezoom.js" type="text/javascript"></script>
-        <script src="js/jquery.flexslider.js" type="text/javascript"></script>
+        <link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />       
     </head>
     <body>      
         <% 
@@ -32,7 +31,15 @@
             GroupCloth gr = grc.GetGroupCloth(cloth.getGroupCloth().getGroupID());
             NumberFormat nf = NumberFormat.getInstance();
             nf.setMinimumIntegerDigits(0);
+            
+            Card card = (Card) session.getAttribute("card");
+            if (card == null)
+            {
+                card = new Card();
+                session.setAttribute("card", card);
+            }
         %>
+             
         <div class="container">
         <div class="women_main">
 	<!-- start content -->
@@ -43,8 +50,9 @@
 						<div class="flexslider">
 							        <!-- FlexSlider -->
 										<script src="js/imagezoom.js"></script>
-										  <script defer src="js/jquery.flexslider.js"></script>
-										<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+										  <script defer="" src="js/jquery.flexslider.js"></script>
+										<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen">
+
 										<script>
 										// Can also be used with $(document).ready()
 										$(window).load(function() {
@@ -56,22 +64,28 @@
 										</script>
 									<!-- //FlexSlider-->
 
-							  <ul class="slides">
-								<li data-thumb="images/d1.jpg">
-                                                                    <div class="thumb-image"> <img src="<%=cloth.getImage()%>" data-imagezoom="true" class="img-responsive"> </div>
-								</li>
-								<li data-thumb="images/d2.jpg">
-									 <div class="thumb-image"> <img src="<%=cloth.getImage()%>" data-imagezoom="true" class="img-responsive"> </div>
-								</li>
-								<li data-thumb="images/d3.jpg">
-								   <div class="thumb-image"> <img src="<%=cloth.getImage()%>" data-imagezoom="true" class="img-responsive"> </div>
-								</li>
-								<li data-thumb="images/d4.jpg">
-								   <div class="thumb-image"> <img src="<%=cloth.getImage()%>" data-imagezoom="true" class="img-responsive"> </div>
-								</li>
-							  </ul>
+							  
 							<div class="clearfix"></div>
-						</div>
+						<div class="flex-viewport" style="overflow: hidden; position: relative;">
+                                                    <ul class="slides" style="width: 1200%; transition-duration: 0.6s; transform: translate3d(-1152px, 0px, 0px);">
+                                                        <li data-thumb="images/d4.jpg" class="clone" aria-hidden="true" style="width: 288px; float: left; display: block;">
+                                                            <div class="thumb-image"> <img src="<%=cloth.getImage()%>" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
+							</li>
+								<li data-thumb="images/d1.jpg" class="" style="width: 288px; float: left; display: block;">
+									<div class="thumb-image"> <img src="<%=cloth.getImage()%>" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
+								</li>
+								<li data-thumb="images/d2.jpg" style="width: 288px; float: left; display: block;" class="">
+									 <div class="thumb-image"> <img src="<%=cloth.getImage()%>" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
+								</li>
+								<li data-thumb="images/d3.jpg" style="width: 288px; float: left; display: block;" class="">
+								   <div class="thumb-image"> <img src="<%=cloth.getImage()%>" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
+								</li>
+								<li data-thumb="images/d4.jpg" style="width: 288px; float: left; display: block;" class="flex-active-slide">
+								   <div class="thumb-image"> <img src="<%=cloth.getImage()%>" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
+								</li>
+							  <li data-thumb="images/d1.jpg" class="clone" aria-hidden="true" style="width: 288px; float: left; display: block;">
+									<div class="thumb-image"> <img src="<%=cloth.getImage()%>" data-imagezoom="true" class="img-responsive" draggable="false"> </div>
+								</li></ul></div><ol class="flex-control-nav flex-control-thumbs"><li><img src="<%=cloth.getImage()%>" class="" draggable="false"></li><li><img src="<%=cloth.getImage()%>" draggable="false" class=""></li><li><img src="<%=cloth.getImage()%>" draggable="false" class=""></li><li><img src="<%=cloth.getImage()%>" draggable="false" class="flex-active"></li></ol><ul class="flex-direction-nav"><li class="flex-nav-prev"><a class="flex-prev" href="#">Previous</a></li><li class="flex-nav-next"><a class="flex-next" href="#">Next</a></li></ul></div>
 					</div>
 				  <div class="desc1 span_3_of_2">
 					<h3><%=cloth.getClothName()%></h3>
@@ -89,7 +103,7 @@
 							</div>
 					</div>
 					<div class="btn_form">
-						<a href="checkout.html">MUA</a>
+                                            <a href="CardSeverlet?command=Insert&clothID=<%=cloth.getClothID()%>&CardID=<%=System.currentTimeMillis()%>">MUA</a>
 					</div>
 					<a href="#"><span>đăng nhập để được giảm giá </span></a>
 					
