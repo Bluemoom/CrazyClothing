@@ -89,7 +89,7 @@
 					</div>
 				  <div class="desc1 span_3_of_2">
 					<h3><%=cloth.getClothName()%></h3>
-                                        <span class="brand">Nhãn hiệu: <a href="ShowGroup.jsp?groupID=<%=gr.getGroupID()%>"><%=gr.getGroupName()%></a></span>
+                                        <span class="brand">NHÓM : <a href="ShowGroup.jsp?groupID=<%=gr.getGroupID()%>"><%=gr.getGroupName()%></a></span>
 					<br>
                                         <span class="code">Mã sản phẩm: <%=cloth.getClothID()%></span>					
 						<div class="price">
@@ -99,7 +99,7 @@
 					<div class="det_nav1">
 						<h4>SALE : <%=cloth.getSale()%> %</h4>
 							<div class=" sky-form col col-4">
-								
+								<span class="code">Số lượng còn : <%=cloth.getQuantity()%> sản phẩm</span>	
 							</div>
 					</div>
 					<div class="btn_form">

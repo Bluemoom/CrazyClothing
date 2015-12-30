@@ -32,17 +32,17 @@ public class CartServlet extends HttpServlet {
         ClothDao cld = new ClothDao();
         Cloth cloth = new Cloth();
         String url = "Bag.jsp";
-        
+
         try {
             if (command.equals("buy")) {
                 ClothBuy clothBuy = new ClothBuy(cld.findById(clothID), 1);
                 List<ClothBuy> cart = new ArrayList<ClothBuy>();
                 double totalPrice = 0;
                 // trường hợp chưa mua sản phẩm nào
-                if (session.getAttribute("cart") == null) {       
+                if (session.getAttribute("cart") == null) {
                     cart.add(clothBuy);
                     session.setAttribute("cart", cart);
-                } else {         
+                } else {
                     // trường hợp đã mua sản phẩm
                     int temp = 0;
                     cart = (ArrayList<ClothBuy>) session.getAttribute("cart");
@@ -59,12 +59,10 @@ public class CartServlet extends HttpServlet {
                         cart.add(clothBuy);
                         session.setAttribute("cart", cart);
                     }
-                    
-                    // Tính tổng tiền cho giỏ
-                    for (ClothBuy cb : cart) {
-                        totalPrice += cb.getCloth().getPrice()*cb.getQuantityBuy();
-                    }
-                    
+                }
+                // Tính tổng tiền cho giỏ
+                for (ClothBuy cb : cart) {
+                    totalPrice += cb.getQuantityBuy() * cb.getCloth().getPrice() * (1 - ((double) cb.getCloth().getSale() / 100));
                 }
                 session.setAttribute("totalPrice", totalPrice);
                 RequestDispatcher rd = request.getRequestDispatcher(url);
@@ -77,7 +75,7 @@ public class CartServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            doGet(request, response);
+        doGet(request, response);
     }
 
 }

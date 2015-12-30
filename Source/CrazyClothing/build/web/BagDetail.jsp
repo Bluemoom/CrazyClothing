@@ -56,8 +56,6 @@
                         <a href="OrderInfomation.jsp">THANH TOÁN</a>
                     </div>
 
-
-
                     <div class="clearfix"></div>
                     <!--			 <a class="order" href="#">Place Order</a>-->
                     <div class="total-item">

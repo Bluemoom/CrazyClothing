@@ -29,7 +29,10 @@
                     <a href="ShowDetailCloth.jsp?ClothID=<%=cloth.getClothID()%>"><img src="<%=cloth.getImage() %>" class="img-responsive" alt=""></a>
 				<div class="special-info grid_1 simpleCart_shelfItem">
 					<h5><%=cloth.getClothName()%></h5>
-					<div class="item_add"><span class="item_price"><h6><%=cloth.getPrice()%> VNĐ</h6></span></div>
+					<div class="item_add"><span class="item_price"><h6><%=cloth.getPrice()%> VNĐ</h6></span>
+                                        <span class="code">Sales: <%=cloth.getSale()%> %</span>	
+                                        </div>
+                                        
 					<div class="item_add"><span class="item_price"><a href="CartServlet?command=buy&clothID=<%=cloth.getClothID()%>&CardID=<%=System.currentTimeMillis()%>">THÊM VÀO GIỎ</a></span></div>
 				</div>
 		</li>
