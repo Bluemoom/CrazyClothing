@@ -35,17 +35,18 @@ public class CartServlet extends HttpServlet {
         
         try {
             if (command.equals("buy")) {
+                ClothBuy clothBuy = new ClothBuy(cld.findById(clothID), 1);
+                List<ClothBuy> cart = new ArrayList<ClothBuy>();
+                double totalPrice = 0;
                 // trường hợp chưa mua sản phẩm nào
                 if (session.getAttribute("cart") == null) {       
-                    List<ClothBuy> cart = new ArrayList<ClothBuy>();
-                    cart.add(new ClothBuy(cld.findById(clothID), 1));
+                    cart.add(clothBuy);
                     session.setAttribute("cart", cart);
                 } else {         
                     // trường hợp đã mua sản phẩm
-                    List<ClothBuy> cart = (ArrayList<ClothBuy>) session.getAttribute("cart");
-                    ClothBuy clothBuy = new ClothBuy(cld.findById(clothID), 1);
-                    // Kiểm tra xem sản phẩm có trong giỏ chưa. nếu có thì tăng số lượng
                     int temp = 0;
+                    cart = (ArrayList<ClothBuy>) session.getAttribute("cart");
+                    // Kiểm tra xem sản phẩm có trong giỏ chưa. nếu có thì tăng số lượng
                     for (ClothBuy cb : cart) {
                         if (cb.cloth.getClothID().equals(clothID)) {
 
@@ -58,7 +59,14 @@ public class CartServlet extends HttpServlet {
                         cart.add(clothBuy);
                         session.setAttribute("cart", cart);
                     }
+                    
+                    // Tính tổng tiền cho giỏ
+                    for (ClothBuy cb : cart) {
+                        totalPrice += cb.getCloth().getPrice()*cb.getQuantityBuy();
+                    }
+                    
                 }
+                session.setAttribute("totalPrice", totalPrice);
                 RequestDispatcher rd = request.getRequestDispatcher(url);
                 rd.forward(request, response);
             }
