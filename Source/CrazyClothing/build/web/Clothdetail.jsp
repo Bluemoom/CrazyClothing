@@ -103,7 +103,7 @@
 							</div>
 					</div>
 					<div class="btn_form">
-                                            <a href="CardSeverlet?command=Insert&clothID=<%=cloth.getClothID()%>&CardID=<%=System.currentTimeMillis()%>">MUA</a>
+                                            <a href="CartServlet?command=buy&clothID=<%=cloth.getClothID()%>">MUA</a>
 					</div>
 					<a href="#"><span>đăng nhập để được giảm giá </span></a>
 					

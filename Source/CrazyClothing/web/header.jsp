@@ -40,7 +40,7 @@
 	<div class="header">
 	<div class="head-t">
 		<div class="logo">
-			<a href="index.html"><img src="images/logo_1.png" class="img-responsive" alt=""/> </a>
+			<a href="index.jsp"><img src="images/logo_1.png" class="img-responsive" alt=""/> </a>
 		</div>
 		<!-- start header_right -->
 		<div class="header_right">
@@ -79,7 +79,7 @@
 				<div class="clearfix"> </div>
 			</div>
 			<div class="create_btn">
-				<a href="checkout.html">GIỎ HÀNG</a>
+				<a href="Bag.jsp">GIỎ HÀNG</a>
 			</div>
 			<div class="clearfix"> </div>
 		</div>

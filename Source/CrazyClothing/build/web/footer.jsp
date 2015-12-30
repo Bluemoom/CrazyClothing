@@ -26,7 +26,7 @@
 		<div class="col-md-6 s-c">
 			<li>
 				<div class="fooll">
-					<h5>Theo dõi chúng tôi</h5>
+<!--					<h5>Theo dõi chúng tôi</h5>-->
 				</div>
 			</li>
 			<li>

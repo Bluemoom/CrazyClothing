@@ -4,10 +4,14 @@
     Author     : sunny
 --%>
 
+<%@page import="java.text.NumberFormat"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.ClothBuy"%>
+<%@page import="java.util.List"%>
 <%@page import="java.util.Map"%>
 <%@page import="model.Cloth"%>
 <%@page import="java.util.TreeMap"%>
-<%@page import="model.Card"%>
+<%@page import="model.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,89 +24,87 @@
         <link href='//fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
         <link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
     </head>
-    <body>        
-        
+    <body>            
         <%
-            Card card = (Card) session.getAttribute("card");
-            if (card == null)
-            {
-                card = new Card();
-                session.setAttribute("card", card);
+            List<ClothBuy> cart = (ArrayList<ClothBuy>) session.getAttribute("cart");
+            if (cart == null) {
+                cart = new ArrayList<ClothBuy>();
             }
-            TreeMap<Cloth,Integer> list = card.getList();
-        %>
-                
+            NumberFormat nf = NumberFormat.getInstance();
+            nf.setMinimumIntegerDigits(0);
+        %> 
+
         <div class="container">               
-	<div class="check">    
-            <div class="col-md-3 cart-total">                            
-			 <a class="continue" href="#">Continue to basket</a>
-			 <div class="price-details">
-				 <h3>Price Details</h3>
-				 <span>Total</span>
-				 <span class="total1"><%=%></span>
-				 <span>Discount</span>
-				 <span class="total1">---</span>
-				 <span>Delivery Charges</span>
-				 <span class="total1">150.00</span>
-				 <div class="clearfix"></div>				 
-			 </div>	
-			 <ul class="total_price">
-			   <li class="last_price"> <h4>TOTAL</h4></li>	
-			   <li class="last_price"><span>6350.00</span></li>
-			   <div class="clearfix"> </div>
-			 </ul>
-			
-			 
-			 <div class="clearfix"></div>
-			 <a class="order" href="#">Place Order</a>
-			 <div class="total-item">
-				 <h3>OPTIONS</h3>
-				 <h4>COUPONS</h4>
-				 <a class="cpns" href="#">Apply Coupons</a>
-				 <p><a href="#">Log In</a> to use accounts - linked coupons</p>
-			 </div>                      
-			</div>             
-		 <div class="col-md-9 cart-items">
-                     
-			 <h1>My Shopping Bag </h1>
-				<script>$(document).ready(function(c) {
-					$('.close1').on('click', function(c){
-						$('.cart-header').fadeOut('slow', function(c){
-							$('.cart-header').remove();
-						});
-						});	  
-					});
-			   </script>
-			 <div class="cart-header">
-				 <div class="close1"> </div>
-				 <div class="cart-sec simpleCart_shelfItem">   
-                                        <%for (Map.Entry<Cloth, Integer> ds : list.entrySet()){%>  
-						<div class="cart-item cyc">
-                                                    <img src="<%=ds.getKey().getImage()%>" class="img-responsive" alt=""/>
-						</div>
-                                                <div class="cart-item-info">
-						<h3><a href="#"><%=ds.getKey().getClothName()%></a><span>Mã sản phẩm: <%=ds.getKey().getClothID()%></span></h3>
-						<ul class="qty">
-							<li><p>Sale : <%=ds.getKey().getSale()%></p></li>
-							<li><p>Quantity : <%=ds.getValue()%></p></li>
-						</ul>
-						
-							 <div class="delivery">
-							 <p>Phí dịch vụ : 0 VNĐ</p>		 
-							 <div class="clearfix"></div>
-                                                        </div>	
-                                                </div>
-					   <div class="clearfix"></div>   
-                                           <%}%>       
-				  </div>
-			 </div>	
-                                                
-		 </div>		
-			<div class="clearfix"> </div>   
-                       
-	 </div>
-                                          
-	 </div>
-                                               
+            <div class="check">    
+                <div class="col-md-3 cart-total">                            
+                    <a class="continue" href="index.jsp">Tiếp tục mua hàng</a>
+                    <div class="price-details">
+                        <h3>Chi tiết đơn hàng</h3>
+                        <span>Tổng tiền</span>
+                        <span class="total1">Chưa tính tổng tiền</span>
+                        <span>Phí vận chuyển:</span>
+                        <span class="total1">0 VNĐ</span>
+                        <div class="clearfix"></div>				 
+                    </div>	
+                    <ul class="total_price">
+                        <li class="last_price"> <h4>TOTAL</h4></li>	
+                        <li class="last_price"><span>0 VNĐ</span></li>
+                        <div class="clearfix"> </div>
+                    </ul>
+                    <div class="btn_form">
+                        <a href="OrderInfomation.jsp">THANH TOÁN</a>
+                    </div>
+
+
+
+                    <div class="clearfix"></div>
+                    <!--			 <a class="order" href="#">Place Order</a>-->
+                    <div class="total-item">
+                        <!--				 <h3>OPTIONS</h3>
+                                                         <h4>COUPONS</h4>
+                                                         <a class="cpns" href="#">Apply Coupons</a>
+                                                         <p><a href="#">Log In</a> to use accounts - linked coupons</p>-->
+                    </div>                      
+                </div>             
+                <div class="col-md-9 cart-items">
+
+                    <h1>GIỎ HÀNG : <%=cart.size()%> </h1>
+
+                    <div class="cart-header">
+                        <div class="close1"> </div>
+                        <div class="cart-sec simpleCart_shelfItem">   
+                            <%for (ClothBuy cb : cart) {%>  
+                            <div class="cart-item cyc">
+                                <img src="<%=cb.getCloth().getImage()%>" class="img-responsive" alt=""/>
+                            </div>
+                            <div class="cart-item-info">
+                                <h3><a href="#"></a><span>Mã sản phẩm: <%=cb.getCloth().getClothID()%></span></h3>
+                                <h3><span>Tên sản phẩm: <%=cb.getCloth().getClothName()%></span></h3>
+                                <ul class="qty">
+                                    <li><p>Số lượng mua : <%=cb.getQuantityBuy()%></p></li>							
+                                </ul>
+                                <ul class="qty">
+                                    <li><p>Giá bán : <%=nf.format(cb.getCloth().getPrice())%> VNĐ</p></li>							
+                                </ul>
+                                <ul class="qty">
+                                    <li><p>Giảm giá : <%=cb.getCloth().getSale()%> %</p></li>							
+                                </ul>						
+                                <div class="price">
+                                    <span class="text">Tổng tiền:</span>
+                                    <span class="price-new"><%=nf.format(cb.getQuantityBuy() * cb.getCloth().getPrice() - (cb.getQuantityBuy() * cb.getCloth().getPrice() * cb.getCloth().getSale() / 100))%> VNĐ</span>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>   
+                            <% }%>       
+                        </div>
+                    </div>	
+
+                </div>		
+                <div class="clearfix"> </div>   
+
+            </div>
+
+        </div>
+
     </body>
 </html>

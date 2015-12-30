@@ -21,8 +21,8 @@ public class DBConnect {
       String hostName = "localhost";
       String sqlInstanceName = "SQLEXPRESS";
       String database = "CrazyClothing";
-      String userName = "Mr_Dat_New";
-      String password = "vip1994";
+      String userName = "CrazyClothing";
+      String password = "Thuan1714";
  
       return getSQLServerConnection1(hostName, sqlInstanceName,
               database, userName, password);
@@ -50,10 +50,9 @@ public class DBConnect {
 //      String hostName = "localhost";
 //      String sqlInstanceName = "SQLEXPRESS";
 //      String database = "CrazyClothing";
-//      String userName = "Java";
+//      String userName = "CrazyClothing";
 //      String password = "Thuan1714";
-//        System.out.println(getSQLServerConnection(hostName, sqlInstanceName,
-//              database, userName, password));
+//        System.out.println(getSQLServerConnection1(hostName, sqlInstanceName,database, userName, password));
 //    }
     
 }
