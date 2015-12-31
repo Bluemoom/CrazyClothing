@@ -29,6 +29,7 @@
             Cloth cloth = cl.ShowDetailCloth(request.getParameter("ClothID"));  
             GroupClothDao grc = new GroupClothDao();
             GroupCloth gr = grc.GetGroupCloth(cloth.getGroupCloth().getGroupID());
+            
             NumberFormat nf = NumberFormat.getInstance();
             nf.setMinimumIntegerDigits(0);
             

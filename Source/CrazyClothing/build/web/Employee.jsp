@@ -1,7 +1,7 @@
 <%-- 
-    Document   : Bag
-    Created on : Dec 29, 2015, 9:58:42 PM
-    Author     : Mr_Dat
+    Document   : Employee
+    Created on : Dec 31, 2015, 10:26:31 AM
+    Author     : sunny
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,12 +9,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Bag detail</title>
+        <title>Employee Page</title>
     </head>
     <body>
-         <%@include file="header.jsp"%>
+        <%@include file="header.jsp"%>
         <%@include file="Menu.jsp"%>
-        <%@include file="BagDetail.jsp"%>
-        <%@include file="footer.jsp"%>
+        <h1>Trang nhân viên</h1>
     </body>
 </html>

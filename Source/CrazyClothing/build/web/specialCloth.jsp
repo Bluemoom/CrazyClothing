@@ -33,7 +33,7 @@
                                         <span class="code">Sales: <%=cloth.getSale()%> %</span>	
                                         </div>
                                         
-					<div class="item_add"><span class="item_price"><a href="CartServlet?command=buy&clothID=<%=cloth.getClothID()%>&CardID=<%=System.currentTimeMillis()%>">THÊM VÀO GIỎ</a></span></div>
+					<div class="item_add"><span class="item_price"><a href="CartServlet?command=buy&clothID=<%=cloth.getClothID()%>">THÊM VÀO GIỎ</a></span></div>
 				</div>
 		</li>
                 <% } %>

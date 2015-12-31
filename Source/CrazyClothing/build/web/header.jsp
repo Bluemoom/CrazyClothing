@@ -4,6 +4,9 @@
     Author     : sunny
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="model.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,6 +20,11 @@
         <link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
     </head>
     <body>
+        <% Customer customer = (Customer) session.getAttribute("customer"); 
+//         List<ClothBuy> cart = (ArrayList<ClothBuy>) session.getAttribute("cart");
+         double tt = 0;
+         if(session.getAttribute("totalPrice")!=null) tt = (Double) session.getAttribute("totalPrice");
+        %>
         <div class="top_bg">
             <div class="container">
                 <div class="header_top">
@@ -47,7 +55,7 @@
                             <div class="rgt-bottom">
                                 <div class="log">
                                     <div class="login" >
-                                        <div id="loginContainer"><a href="Login.jsp" id="loginButton"><span>ĐĂNG NHẬP</span></a>
+                                        <div id="loginContainer"><a href="<%=(customer!=null)?"ChangeCustomerInfo.jsp":"Login.jsp"%>" id="loginButton"><span><%=(customer!=null)?customer.getCustomerName():"ĐĂNG NHẬP"%></span></a>
                                             <div id="loginBox">                
                                                 <form id="loginForm">
                                                     <fieldset id="body">
@@ -69,13 +77,13 @@
                                     </div>
                                 </div>
                                 <div class="reg">
-                                    <a href="Register.jsp">ĐĂNG KÝ</a>
+                                    <a href="<%=(customer!=null)?"Login.jsp":"Register.jsp"%>"><%=(customer!=null)?"ĐĂNG XUẤT":"ĐĂNG KÝ"%></a>
                                 </div>
                                 <div class="cart box_1">
                                     <a href="Bag.jsp">
-                                        <h3> <span class="simpleCart_total">$0.00</span> (<span id="simpleCart_quantity" class="simpleCart_quantity">0</span> items)<img src="images/bag.png" alt=""></h3>
+                                        <h3> <span class="simpleCart_total">$<%=tt%> VNĐ</span> (<span id="simpleCart_quantity" class="simpleCart_quantity">0</span>  items)<img src="images/bag.png" alt=""></h3>
                                     </a>	
-                                    <p><a href="javascript:;" class="simpleCart_empty">(empty card)</a></p>
+<!--                                    <p><a href="javascript:;" class="simpleCart_empty">(empty card)</a></p>-->
                                     <div class="clearfix"> </div>
                                 </div>
                                 <div class="create_btn">
