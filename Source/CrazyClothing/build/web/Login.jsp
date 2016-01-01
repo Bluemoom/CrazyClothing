@@ -19,32 +19,31 @@
     <body>
         <%@include file="header.jsp"%>
         <%@include file="Menu.jsp"%>
-        <% session.removeAttribute("customer"); %>
-		<h2>ĐĂNG NHẬP</h2>
-		 <div class="registration_form">
-		 <!-- Form -->
-			<form id="registration_form" method="post" action="LoginController">
-<!--                <asp:Label ID="lbThongBao" runat="server" Text="Label"></asp:Label>-->
-                                <input type="hidden" name="action" value="login"/>
-				<div>
-					<label>
-                                            <input type="text" name="username" placeholder="username" />
-					</label>
-				</div>
-				<div>
-					<label>
-                                            <input type="text" placeholder="password" name="password"/>
-					</label>
-				</div>						
-				<div>
-                                    <input type="submit" name="submit" value ="ĐĂNG NHẬP"/>
-				</div>
-                                <h5><%=((String)session.getAttribute("error")!=null)?(String)session.getAttribute("error"):""%></h5>
-                                 <p><a href="Register.jsp">Đăng ký tài khoản - Click Here</a></p>
-			</form>
-			<!-- /Form -->
-			</div>
-        
+        <% session.removeAttribute("customer");%>
+        <h2>ĐĂNG NHẬP</h2>
+        <div class="registration_form">
+            <!-- Form -->
+            <form id="registration_form" method="post" action="LoginController">
+                <!--                <asp:Label ID="lbThongBao" runat="server" Text="Label"></asp:Label>-->
+                <input type="hidden" name="action" value="login"/>
+                <div>
+                    <label>
+                        <input type="text" name="username" placeholder="username" />
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input type="text" placeholder="password" name="password"/>
+                    </label>
+                </div>						
+                <div>
+                    <input type="submit" name="submit" value ="ĐĂNG NHẬP"/>
+                </div>
+                <h5><%=((String) session.getAttribute("error") != null) ? (String) session.getAttribute("error") : ""%></h5>
+                <p><a href="Register.jsp">Đăng ký tài khoản - Click Here</a></p>
+            </form>
+        </div>
+
         <%@include file="footer.jsp"%>
     </body>
 </html>

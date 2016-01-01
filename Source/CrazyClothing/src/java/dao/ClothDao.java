@@ -27,7 +27,7 @@ public class ClothDao {
         ArrayList<Cloth> arr = new ArrayList<Cloth>();
         try {
             Connection conn = DBConnect.getSQLServerConnection();
-            String query="select * from Cloth where new = 1";
+            String query="select * from Cloth where new = 1 and [status] = 1";
             Statement st = null;
             st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
