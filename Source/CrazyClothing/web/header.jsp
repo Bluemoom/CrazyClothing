@@ -3,7 +3,7 @@
     Created on : Dec 28, 2015, 2:41:56 PM
     Author     : sunny
 --%>
-
+<%@page import="java.text.NumberFormat"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="model.*"%>
@@ -21,11 +21,14 @@
     </head>
     <body>
         <% Customer customer = (Customer) session.getAttribute("customer");
-//         List<ClothBuy> cart = (ArrayList<ClothBuy>) session.getAttribute("cart");
+         List<ClothBuy> cart1 = (ArrayList<ClothBuy>) session.getAttribute("cart");
             double tt = 0;
             if (session.getAttribute("totalPrice") != null) {
                 tt = (Double) session.getAttribute("totalPrice");
             }
+            
+            NumberFormat nf1 = NumberFormat.getInstance();
+            nf1.setMinimumIntegerDigits(0);
         %>
         <div class="top_bg">
             <div class="container">
@@ -83,7 +86,7 @@
                                 </div>
                                 <div class="cart box_1">
                                     <a href="Bag.jsp">
-                                        <h3> <span class="simpleCart_total">$<%=tt%> VNĐ</span> (<span id="simpleCart_quantity" class="simpleCart_quantity">0</span>  items)<img src="images/bag.png" alt=""></h3>
+                                        <h3> <span class="simpleCart_total">$ <%=nf1.format(tt)%> VNĐ</span> (<span id="simpleCart_quantity" class="simpleCart_quantity"><%=(cart1!=null)?cart1.size():0%></span>  sp)<img src="images/bag.png" alt=""></h3>
                                     </a>	
                                     <!--                                    <p><a href="javascript:;" class="simpleCart_empty">(empty card)</a></p>-->
                                     <div class="clearfix"> </div>

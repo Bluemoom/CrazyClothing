@@ -15,9 +15,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title> Cloth detail</title>
         <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-        <!-- jQuery (necessary JavaScript plugins) -->
-        <script type='text/javascript' src="js/jquery-1.11.1.min.js"></script>
-        <!-- Custom Theme files -->
+        <script type='text/javascript' src="js/jquery-1.11.1.min.js"></script>      
         <link href="css/style.css" rel='stylesheet' type='text/css' />
         <!-- Custom Theme files -->
         <!--//theme-style-->
