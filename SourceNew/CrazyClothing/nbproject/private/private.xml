@@ -3,14 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/sunny/Desktop/EditCrazyClothing/CrazyClothing/web/Login.jsp</file>
-            <file>file:/C:/Users/sunny/Desktop/EditCrazyClothing/CrazyClothing/src/java/dao/OrderDao.java</file>
-            <file>file:/C:/Users/sunny/Desktop/EditCrazyClothing/CrazyClothing/src/java/model/Order.java</file>
-            <file>file:/C:/Users/sunny/Desktop/EditCrazyClothing/CrazyClothing/src/java/dao/CustomerDao.java</file>
-            <file>file:/C:/Users/sunny/Desktop/EditCrazyClothing/CrazyClothing/src/java/controller/LoginController.java</file>
-            <file>file:/C:/Users/sunny/Desktop/EditCrazyClothing/CrazyClothing/src/java/dao/ClothDao.java</file>
-            <file>file:/C:/Users/sunny/Desktop/EditCrazyClothing/CrazyClothing/web/OrderInfomation.jsp</file>
-            <file>file:/C:/Users/sunny/Desktop/EditCrazyClothing/CrazyClothing/src/java/controller/RegisterServlet.java</file>
+            <file>file:/C:/Users/Mr_Dat/Desktop/CrazyClothing/SourceNew/CrazyClothing/src/java/connect/DBConnect.java</file>
+            <file>file:/C:/Users/Mr_Dat/Desktop/CrazyClothing/SourceNew/CrazyClothing/web/specialCloth.jsp</file>
+            <file>file:/C:/Users/Mr_Dat/Desktop/CrazyClothing/SourceNew/CrazyClothing/web/ShowByGroup.jsp</file>
         </group>
     </open-files>
 </project-private>
