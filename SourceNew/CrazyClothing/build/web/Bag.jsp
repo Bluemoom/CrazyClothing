@@ -73,7 +73,7 @@
                                 <h3><a href="#"></a><span>Mã sản phẩm: <%=cb.getCloth().getClothID()%></span></h3>
                                 <h3><span>Tên sản phẩm: <%=cb.getCloth().getClothName()%></span></h3>
                                 <ul class="qty">
-                                    <li><p>Số lượng mua : <%=cb.getQuantityBuy()%></p></li>							
+                                    <li><p>Số lượng mua : <a href="CartServlet?command=plus&clothID=<%=cb.getCloth().getClothID()%>"> + </a>  <%=cb.getQuantityBuy()%> <a href="CartServlet?command=sub&clothID=<%=cb.getCloth().getClothID()%>"> -- </a> </p></li>							
                                 </ul>
                                 <ul class="qty">
                                     <li><p>Giá bán : <%=nf.format(cb.getCloth().getPrice())%> VNĐ</p></li>							
@@ -85,6 +85,9 @@
                                     <span class="text">Tổng tiền:</span>
                                     <span class="price-new"><%=nf.format(cb.getQuantityBuy() * cb.getCloth().getPrice() - (cb.getQuantityBuy() * cb.getCloth().getPrice() * cb.getCloth().getSale() / 100))%> VNĐ</span>
                                 </div>
+                                <ul class="qty" style="margin-top: 58px">
+                                     <li><p><a href="CartServlet?command=del&clothID=<%=cb.getCloth().getClothID()%>"> Hủy bỏ </a></p></li>							
+                                </ul>
                             </div>
                             <div class="clearfix"></div>   
                             <% }%>       

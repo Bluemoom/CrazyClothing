@@ -34,7 +34,8 @@ public class CartServlet extends HttpServlet {
         String url = "Bag.jsp";
 
         try {
-            if (command.equals("buy")) {
+            if (command.equals("buy")) 
+            {
                 ClothBuy clothBuy = new ClothBuy(cld.findById(clothID), 1);
                 List<ClothBuy> cart = new ArrayList<ClothBuy>();
                 double totalPrice = 0;
@@ -65,10 +66,77 @@ public class CartServlet extends HttpServlet {
                     totalPrice += cb.getQuantityBuy() * cb.getCloth().getPrice() * (1 - ((double) cb.getCloth().getSale() / 100));
                 }
                 session.setAttribute("totalPrice", totalPrice);
+                 RequestDispatcher rd = request.getRequestDispatcher(url);
+                 rd.forward(request, response);
+            }
+            else if (command.equals("plus"))
+            {
+                ArrayList<ClothBuy> cart = (ArrayList<ClothBuy>) session.getAttribute("cart");                   
+                    for (ClothBuy cb : cart) {
+                        if (cb.cloth.getClothID().equals(clothID)) {
+                            cb.setQuantityBuy(cb.getQuantityBuy() + 1);                        
+                        }
+                    }                                           
+                session.setAttribute("cart", cart);
+                // Tính tổng tiền cho giỏ
+                double totalPrice = 0;
+                for (ClothBuy cb : cart) {
+                    totalPrice += cb.getQuantityBuy() * cb.getCloth().getPrice() * (1 - ((double) cb.getCloth().getSale() / 100));
+                }
+                session.setAttribute("totalPrice", totalPrice); 
                 RequestDispatcher rd = request.getRequestDispatcher(url);
                 rd.forward(request, response);
             }
-        } catch (Exception ex) {
+            else if (command.equals("sub"))
+            {
+                double totalPrice = 0;
+                ArrayList<ClothBuy> cart = (ArrayList<ClothBuy>) session.getAttribute("cart");                   
+                    for (ClothBuy cb : cart) 
+                    {                       
+                        if (cb.cloth.getClothID().equals(clothID)) 
+                        {     
+                            int quantity = cb.getQuantityBuy() - 1;                          
+                            if (quantity <= 0)
+                            {
+                                cart.remove(cb); 
+                                break;
+                            }  
+                            else
+                            {
+                             cb.setQuantityBuy(quantity); 
+                            }
+                        }                     
+                    } 
+                 session.setAttribute("cart", cart);   
+                  for (ClothBuy cb : cart) {
+                            totalPrice += cb.getQuantityBuy() * cb.getCloth().getPrice() * (1 - ((double) cb.getCloth().getSale() / 100)); 
+                  }
+                  session.setAttribute("totalPrice", totalPrice);                               
+                  RequestDispatcher rd = request.getRequestDispatcher(url);
+                  rd.forward(request, response);     
+            }
+            else if (command.equals("del"))
+            {
+                double totalPrice = 0;
+                ArrayList<ClothBuy> cart = (ArrayList<ClothBuy>) session.getAttribute("cart");                   
+                    for (ClothBuy cb : cart) 
+                    {
+                        if (cb.cloth.getClothID().equals(clothID)) 
+                        {
+                            cart.remove(cb);  
+                            break;
+                        }                                                    
+                    } 
+                session.setAttribute("cart", cart); 
+                for (ClothBuy cb : cart)  
+                {
+                    totalPrice += cb.getQuantityBuy() * cb.getCloth().getPrice() * (1 - ((double) cb.getCloth().getSale() / 100));
+                }
+                session.setAttribute("totalPrice", totalPrice); 
+                RequestDispatcher rd = request.getRequestDispatcher(url);
+                rd.forward(request, response);
+            }                                                                      
+        } catch (Exception ex) {           
         }
     }
 

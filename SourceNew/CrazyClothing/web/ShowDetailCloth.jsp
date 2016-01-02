@@ -88,7 +88,7 @@
                     </div>
                     <div class="desc1 span_3_of_2">
                         <h3><%=cloth.getClothName()%></h3>
-                        <span class="brand">NHÓM : <a href="ShowGroup.jsp?groupID=<%=gr.getGroupID()%>"><%=gr.getGroupName()%></a></span>
+                        <span class="brand">NHÓM : <a href="ShowByGroup.jsp?groupID=<%=gr.getGroupID()%>"><%=gr.getGroupName()%></a></span>
                         <br>
                         <span class="code">Mã sản phẩm: <%=cloth.getClothID()%></span>					
                         <div class="price">
