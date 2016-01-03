@@ -40,6 +40,7 @@ public class RegisterServlet extends HttpServlet {
         String Name = request.getParameter("name");
         String username_err = "";
         String Email = request.getParameter("email");
+        String Address = request.getParameter("address");
         String Phone = request.getParameter("phone");
         String Username = (String) request.getParameter("username");
 
@@ -62,13 +63,13 @@ public class RegisterServlet extends HttpServlet {
             request.setAttribute("retypepassword_err", retypepassword_err);
         }
         request.setAttribute("username", Username);
-        request.setAttribute("password", Password);
+        request.setAttribute("address", Address);
         request.setAttribute("name", Name);
         request.setAttribute("phone", Phone);
         request.setAttribute("email", Email);
         try {
             if (username_err.length() == 0 && retypepassword_err.length() == 0) {
-                Customer ctm = new Customer(ctd.sinhMa(ctd.GetUserID()), Name, Email, "", Phone, Username, Password, 0, 1);
+                Customer ctm = new Customer(ctd.sinhMa(ctd.GetUserID()), Name, Email, Address, Phone, Username, Password, 0, 1);
                 ctd.addUserInfor(ctm);
                 Url = "/index.jsp";
             } else {

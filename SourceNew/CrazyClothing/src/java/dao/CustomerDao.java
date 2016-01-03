@@ -101,7 +101,7 @@ public class CustomerDao {
 
     public boolean CheckUserInFo(String username) throws ClassNotFoundException, SQLException {
         Connection conn = DBConnect.getSQLServerConnection();
-        String sql = "Select username from Customer where username='" + username + "'";
+        String sql = "Select username from Customer where username='"+username+"'";
         try {
             Statement st = null;
             st = conn.createStatement();

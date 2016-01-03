@@ -18,6 +18,8 @@
         <link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
     </head>
     <body>
+        <%@include file="header.jsp"%>
+        <%@include file="Menu.jsp"%>
         <%         
             String username_err = ""; String retypepassword_err = "";           
             if (request.getAttribute("username_err") != null)
@@ -28,7 +30,7 @@
             {
                 retypepassword_err = (String) request.getAttribute("retypepassword_err");
             }
-            String username = ""; String name = "";String password = ""; String phone = ""; String email ="";
+            String username = ""; String name = "";String address = ""; String phone = ""; String email ="";
              if (request.getAttribute("username") != null)
             {
                 username = (String) request.getAttribute("username");
@@ -44,13 +46,17 @@
              if (request.getAttribute("email") != null)
             {
                 email = (String) request.getAttribute("email");
-            }          
+            } 
+              if (request.getAttribute("address") != null)
+            {
+                address = (String) request.getAttribute("address");
+            }   
         %>
         <div class="container">
             <div class="main">
                 <div class="registration">
                     <div class="registration_left">
-                        <h2>new user? <span> create an account </span></h2>
+                        <h2>Tài khoản mới? <span> Tạo một tài khoản </span></h2>
                         <!-- [if IE] 
                             < link rel='stylesheet' type='text/css' href='ie.css'/>  
                          [endif] -->  
@@ -101,38 +107,43 @@
                             <form id="registration_form" action="RegisterServlet" method="post">				
                                 <div>
                                     <label>
-                                        <input placeholder="Name:" name="name" value="<%=name%>" type="text" tabindex="1" autofocus required>
+                                        <input placeholder="Họ và Tên..." name="name" value="<%=name%>" type="text" tabindex="1" autofocus required>
                                     </label>                         
                                 </div>
                                 <div>
                                     <label>
-                                        <input placeholder="email address:" name="email"  value="<%=email%>" type="email" tabindex="2" required>
+                                        <input placeholder="Email..." name="email"  value="<%=email%>" type="email" tabindex="2" required>
                                     </label>
                                 </div>
                                 <div>
                                     <label>
-                                        <input placeholder="Phone number:"  value="<%=phone%>" name="phone" type="text" tabindex="3" required>
+                                        <input placeholder="Địa chỉ..." name="address"  value="<%=address%>" type="text" tabindex="3" required>
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        <input placeholder="Số điện thoại..."  value="<%=phone%>" name="phone" type="text" tabindex="4" required>
                                     </label>
                                 </div>				
                                 <div>
                                     <label>
-                                        <input placeholder="username"  value="<%=username%>" name="username" type="text" tabindex="4" required>
+                                        <input placeholder="Tài khoản..."  value="<%=username%>" name="username" type="text" tabindex="5" required>
                                     </label>   
                                     <p style="color: red"><%=username_err%></p>
                                 </div>
                                 <div>
                                     <label>
-                                        <input placeholder="password" name="password" type="password" tabindex="5" required>
+                                        <input placeholder="Mật khẩu..." name="password" type="password" tabindex="6" required>
                                     </label>
                                 </div>						
                                 <div>
                                     <label>
-                                        <input placeholder="retype password" name="retypepassword" type="password" tabindex="6" required>
+                                        <input placeholder="Nhập lại mật khẩu..." name="retypepassword" type="password" tabindex="7" required>
                                     </label>
                                     <p style="color: red"><%=retypepassword_err%></p>
                                 </div>	
                                 <div>
-                                    <input type="submit" value="create an account" id="register-submit">
+                                    <input type="submit" value="Tạo mới" id="register-submit">
                                 </div>	
 
                             </form>
@@ -140,25 +151,25 @@
                         </div>
                     </div>
                     <div class="registration_left">
-                        <h2>existing user</h2>
+                        <h2>Đã có tài khoản</h2>
                         <div class="registration_form">
                             <!-- Form -->
                             <form id="registration_form" action="contact.php" method="post">
                                 <div>
                                     <label>
-                                        <input placeholder="email:" type="email" tabindex="3" required>
+                                        <input placeholder="Tài khoản..." type="email" tabindex="8" required>
                                     </label>
                                 </div>
                                 <div>
                                     <label>
-                                        <input placeholder="password" type="password" tabindex="4" required>
+                                        <input placeholder="Mật khẩu..." type="password" tabindex="9" required>
                                     </label>
                                 </div>						
                                 <div>
-                                    <input type="submit" value="sign in" id="register-submit">
+                                    <input type="submit" value="Đăng nhập" id="register-submit">
                                 </div>
                                 <div class="forget">
-                                    <a href="#">forgot your password</a>
+                                    <a href="#">Quên mật khẩu?</a>
                                 </div>
                             </form>
                             <!-- /Form -->
@@ -167,5 +178,8 @@
 
                     <div class="clearfix"></div>
                 </div>
-                </body>
-                </html>
+            </div>
+        </div>
+       <%@include file="footer.jsp"%>
+    </body>
+ </html>
