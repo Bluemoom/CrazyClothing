@@ -16,6 +16,18 @@
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>controller.RegisterServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GroupClothServlet</servlet-name>
+        <servlet-class>controller.GroupClothServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteGroupClothServlet</servlet-name>
+        <servlet-class>controller.DeleteGroupClothServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditGroupClothServlet</servlet-name>
+        <servlet-class>controller.EditGroupClothServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CardSeverlet</servlet-name>
         <url-pattern>/CardSeverlet</url-pattern>
@@ -31,6 +43,18 @@
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GroupClothServlet</servlet-name>
+        <url-pattern>/GroupClothServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteGroupClothServlet</servlet-name>
+        <url-pattern>/DeleteGroupClothServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditGroupClothServlet</servlet-name>
+        <url-pattern>/EditGroupClothServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -8,12 +8,15 @@ package dao;
 import java.util.ArrayList;
 import model.GroupCloth;
 import connect.DBConnect;
+import controller.RegisterServlet;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Cloth;
 
 /**
@@ -29,7 +32,7 @@ public class GroupClothDao {
         {
         Connection conn = DBConnect.getSQLServerConnection();
         Statement stmt = null;
-        String srtQuery = "select * from GroupCloth where groupTop is null";
+        String srtQuery = "select * from GroupCloth";
         stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(srtQuery);
         while (rs.next()) {
@@ -39,7 +42,8 @@ public class GroupClothDao {
             temp.setImage(rs.getString("image"));
             temp.setGroupTop(rs.getString("GroupTop"));
             arr.add(temp);
-         } conn.close();
+         } 
+            conn.close();
         }
         catch(SQLException e)
         {
@@ -83,7 +87,7 @@ public class GroupClothDao {
     
     public GroupCloth GetGroupCloth(String GroupID) throws SQLException, ClassNotFoundException
     {
-          GroupCloth temp = new GroupCloth();
+        GroupCloth temp = new GroupCloth();
         try
         {
         Connection conn = DBConnect.getSQLServerConnection();
@@ -103,5 +107,94 @@ public class GroupClothDao {
             e.getStackTrace();
         }
         return temp;
+    }  
+    
+    public String sinhMa(String _matruoc) {
+        String maMoi = "";
+
+        if (_matruoc == null || _matruoc == "") {
+            _matruoc = "100000";
+
+        } else if (_matruoc == "999999") {
+            return null;
+        }
+        maMoi = Integer.toString(Integer.parseInt(_matruoc) + 1);
+        return maMoi;
+    }
+    
+     public String GetgroupID() throws ClassNotFoundException, SQLException {
+        Connection conn = DBConnect.getSQLServerConnection();
+        String sql = "Select top 1 groupID from GroupCloth order by groupID desc";
+        try {
+            Statement st = null;
+            st = conn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                return rs.getString("groupID");
+            }
+            conn.close();
+        } catch (Exception ex) {
+            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+  
+    
+     public void addNewGroupCloth(GroupCloth gr) throws SQLException, ClassNotFoundException
+    {
+        Connection conn = DBConnect.getSQLServerConnection();
+        try
+        {
+            PreparedStatement ps = conn.prepareStatement("insert into GroupCloth values (?,?,?,?)");
+            ps.setString(1, gr.getGroupID());
+            ps.setString(2, gr.getGroupName());
+            ps.setString(3, gr.getImage());
+            ps.setString(4, gr.getGroupTop());
+            ps.executeUpdate();
+            conn.close();
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }   
+  
+     public void editGroupCloth(String groupID,String groupName,String image,String groupTop) throws SQLException, ClassNotFoundException
+    {
+        Connection conn = DBConnect.getSQLServerConnection();
+        String query = "update GroupCloth set groupName=?,image=?,groupTop=?"+" where groupID = ?";
+        try
+        {
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, groupName);
+            ps.setString(2, image);
+            ps.setString(3, groupTop);
+            ps.setString(4, groupID);
+            ps.executeUpdate();
+            conn.close();
+        }
+        catch (Exception ex)
+        {
+            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);         
+        }
+    }   
+     
+     public void delete(String groupID ) throws SQLException, ClassNotFoundException
+     {
+         Connection conn = DBConnect.getSQLServerConnection();
+         String query = "delete GroupCloth where groupID = ?";
+         try
+         {
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, groupID);
+            ps.executeUpdate();
+            conn.close();
+         }
+         catch (Exception ex)
+         {
+              Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);         
+         }
+         
+     }
+     
 }
