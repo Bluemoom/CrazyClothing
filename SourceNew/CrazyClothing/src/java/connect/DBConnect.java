@@ -27,8 +27,8 @@ public class DBConnect {
         String hostName = "localhost";
         String sqlInstanceName = "SQLEXPRESS";
         String database = "CrazyClothing";
-        String userName = "Mr_Dat_New";
-        String password = "vip1994";
+        String userName = "CrazyClothing";
+        String password = "Thuan1714";
 
         return getSQLServerConnection1(hostName, sqlInstanceName,
                 database, userName, password);
@@ -71,7 +71,7 @@ public class DBConnect {
             st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                _matruoc = rs.getString("" + ColumName + "");
+                _matruoc = rs.getString(""+ColumName+"");
             }
             conn.close();
         } catch (Exception ex) {

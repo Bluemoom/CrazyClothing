@@ -8,7 +8,6 @@ import dao.CustomerDao;
 import dao.OrderDao;
 import dao.OrderDetailDao;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -42,88 +41,83 @@ public class LoginController extends HttpServlet {
         String error = "";
 
         if (action.equals("login")) {
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
-            CustomerDao ctmDao = new CustomerDao();
-            int rule = -1;
             try {
+                String username = request.getParameter("username");
+                String password = request.getParameter("password");
+                CustomerDao ctmDao = new CustomerDao();
+                Customer customer = null;
+                int rule = -1;
+
                 rule = ctmDao.checkLogin(username, password);
+                if (rule == 0) {
+                    customer = ctmDao.findById(username, password);
+                    session.setAttribute("customer", customer);
+                    url = "index.jsp";
+                } else if (rule == 1) {
+                    url = "Employee.jsp";
+                } else if (rule == 2) {
+                    url = "Admin.jsp";
+                } else {
+                    url = "Login.jsp";
+                    error = "Thông tin đăng nhập không chính xác";
+                }
+                session.setAttribute("error", error);
+                RequestDispatcher rd = request.getRequestDispatcher(url);
+                rd.forward(request, response);
             } catch (SQLException ex) {
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if (rule == 0) {
-                Customer customer = null;
-                try {
-                    customer = ctmDao.findById(username, password);
-
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                session.setAttribute("customer", customer);
-                url = "index.jsp";
-            } else if (rule == 1) {
-                url = "Employee.jsp";
-            } else if (rule == 2) {
-                url = "Admin.jsp";
-            } else {
-                url = "Login.jsp";
-                error = "Thông tin đăng nhập không chính xác";
-            }
-
-            session.setAttribute("error", error);
-            RequestDispatcher rd = request.getRequestDispatcher(url);
-            rd.forward(request, response);
         } else if (action.equals("order")) {
             try {
                 // kiểm tra nếu người dùng đã đăng nhập thì thêm đơn hàng với idCUstomer là id người dùng đã đn
                 String idCustomer = "";
-                if (session.getAttribute("Customer") != null) {
-                    Customer customer = (Customer) session.getAttribute("Customer");
+                
+                if (session.getAttribute("customer") != null) {
+                    Customer customer = (Customer) session.getAttribute("customer");
                     idCustomer = customer.getCustomerID();
-                } else {
-                    try {
-                        String name = (String) session.getAttribute("txtname");
-                        String email = (String) session.getAttribute("txtemail");
-                        String address = (String) session.getAttribute("txtaddress");
-                        String phonenumber = (String) session.getAttribute("txtphonenumber");
-                        idCustomer = ctd.sinhMa(ctd.GetUserID());
+                } else {                   
+                        String name = (String) request.getParameter("txtname");
+                        String email = (String) request.getParameter("txtemail");
+                        String address = (String) request.getParameter("txtaddress");
+                        String phonenumber = (String) request.getParameter("txtphonenumber");
+                        idCustomer = DBConnect.sinhMa("Customer", "CustomerID");
                         Customer ctm;
                         ctm = new Customer(idCustomer, name, email, address, phonenumber, "", "CrazyClothing", 0, 1);
-                        ctd.addUserInfor(ctm);
-                        
-                    } catch (ClassNotFoundException ex) {
-                        Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (SQLException ex) {
-                        Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    
+                        ctd.addUserInfor(ctm);             
                 }
                 // tạo mới order
                 OrderDao odd = new OrderDao();
-                Order od = new Order();
-                String orderID = DBConnect.sinhMa("Order", "OrderID");
+                Order od = new Order();                
+                String orderID = DBConnect.sinhMa("[Order]", "orderID");
+                
                 od.setOrderID(orderID);
                 od.setCustomerID(idCustomer);
                 od.setTotalMoney((Double) session.getAttribute("totalPrice"));
                 od.setTime(Date.valueOf(LocalDate.now()));
                 od.setStatus(1);
                 odd.addOrder(od);
-                
+
                 // Thêm order detail vào CSDL
                 OrderDetailDao odtd = new OrderDetailDao();
                 OrderDetail orderDetail = new OrderDetail();
-                orderDetail.setOrderDetailID(DBConnect.sinhMa("OrderDetail", "OrderDetailID"));
-                orderDetail.setOrderID(orderID);
-                List<ClothBuy> lst = (ArrayList<ClothBuy>) session.getAttribute("cart");                
-                for(ClothBuy clb : lst)
-                {
+                String OrderDetailID = "";                
+                orderDetail.setOrderID(orderID);                   
+                List<ClothBuy> lst = (ArrayList<ClothBuy>) session.getAttribute("cart");
+                
+                for (ClothBuy clb : lst) {
+                    OrderDetailID = DBConnect.sinhMa("OrderDetail", "OrderDetailID");
                     orderDetail.setClothID(clb.getCloth().getClothID());
+                    orderDetail.setOrderDetailID(OrderDetailID);
                     orderDetail.setQuantity(clb.getQuantityBuy());
                     odtd.addOrderDetail(orderDetail);
                 }
-                 
+                
+                session.removeAttribute("cart");
+                session.removeAttribute("totalPrice");
+                response.sendRedirect("Finish.jsp");
+
             } catch (SQLException ex) {
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {

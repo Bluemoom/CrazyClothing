@@ -31,7 +31,7 @@ public class Main {
 //        String password = "chuyenlangthang";
 //        int rs=gcDao.checkLogin(username,password);
 //        int i = 999999;
-          System.out.println(gcDao.showDanhMuc());
+          System.out.println(DBConnect.sinhMa("[Order]", "OrderID"));
 
     }
 }
