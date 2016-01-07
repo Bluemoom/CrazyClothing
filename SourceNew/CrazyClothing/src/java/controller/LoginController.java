@@ -73,25 +73,31 @@ public class LoginController extends HttpServlet {
             try {
                 // kiểm tra nếu người dùng đã đăng nhập thì thêm đơn hàng với idCUstomer là id người dùng đã đn
                 String idCustomer = "";
-                
+
                 if (session.getAttribute("customer") != null) {
                     Customer customer = (Customer) session.getAttribute("customer");
                     idCustomer = customer.getCustomerID();
-                } else {                   
-                        String name = (String) request.getParameter("txtname");
-                        String email = (String) request.getParameter("txtemail");
-                        String address = (String) request.getParameter("txtaddress");
-                        String phonenumber = (String) request.getParameter("txtphonenumber");
-                        idCustomer = DBConnect.sinhMa("Customer", "CustomerID");
-                        Customer ctm;
-                        ctm = new Customer(idCustomer, name, email, address, phonenumber, "", "CrazyClothing", 0, 1);
-                        ctd.addUserInfor(ctm);             
+                    String name = (String) request.getParameter("txtname");
+                    String email = (String) request.getParameter("txtemail");
+                    String address = (String) request.getParameter("txtaddress");
+                    String phonenumber = (String) request.getParameter("txtSoDienThoai");                    
+                    Customer ctm = new Customer(idCustomer, name, email, address, phonenumber, customer.getUsername(), customer.getPassword(), customer.getRule(), customer.getStatus());
+                    ctd.EditCustomer(ctm);                    
+                } else {
+                    String name = (String) request.getParameter("txtname");
+                    String email = (String) request.getParameter("txtemail");
+                    String address = (String) request.getParameter("txtaddress");
+                    String phonenumber = (String) request.getParameter("txtSoDienThoai");
+                    idCustomer = DBConnect.sinhMa("Customer", "CustomerID");
+                    Customer ctm;
+                    ctm = new Customer(idCustomer, name, email, address, phonenumber, "", "CrazyClothing", 0, 1);
+                    ctd.addUserInfor(ctm);
                 }
                 // tạo mới order
                 OrderDao odd = new OrderDao();
-                Order od = new Order();                
+                Order od = new Order();
                 String orderID = DBConnect.sinhMa("[Order]", "orderID");
-                
+
                 od.setOrderID(orderID);
                 od.setCustomerID(idCustomer);
                 od.setTotalMoney((Double) session.getAttribute("totalPrice"));
@@ -102,10 +108,10 @@ public class LoginController extends HttpServlet {
                 // Thêm order detail vào CSDL
                 OrderDetailDao odtd = new OrderDetailDao();
                 OrderDetail orderDetail = new OrderDetail();
-                String OrderDetailID = "";                
-                orderDetail.setOrderID(orderID);                   
+                String OrderDetailID = "";
+                orderDetail.setOrderID(orderID);
                 List<ClothBuy> lst = (ArrayList<ClothBuy>) session.getAttribute("cart");
-                
+
                 for (ClothBuy clb : lst) {
                     OrderDetailID = DBConnect.sinhMa("OrderDetail", "OrderDetailID");
                     orderDetail.setClothID(clb.getCloth().getClothID());
@@ -113,7 +119,7 @@ public class LoginController extends HttpServlet {
                     orderDetail.setQuantity(clb.getQuantityBuy());
                     odtd.addOrderDetail(orderDetail);
                 }
-                
+
                 session.removeAttribute("cart");
                 session.removeAttribute("totalPrice");
                 response.sendRedirect("Finish.jsp");

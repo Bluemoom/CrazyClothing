@@ -13,7 +13,7 @@ import dao.CustomerDao;
 import dao.GroupClothDao;
 import java.io.Console;
 import java.sql.SQLException;
-import model.GroupCloth;
+import model.*;
 
 /**
  *
@@ -31,6 +31,10 @@ public class Main {
 //        String password = "chuyenlangthang";
 //        int rs=gcDao.checkLogin(username,password);
 //        int i = 999999;
+          Customer c= new Customer();
+          c = new Customer("100006","Quyên nguyễn","nguyenquyen@facebook.com","Nga Son","01628282682","Sunnymarch","Quyenthuan1714",0,1);
+          CustomerDao cd = new CustomerDao();
+          cd.EditCustomer(c);
           System.out.println(DBConnect.sinhMa("[Order]", "OrderID"));
 
     }

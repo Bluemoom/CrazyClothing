@@ -19,6 +19,8 @@
     <body>
         <%@include file="header.jsp"%>
         <%@include file="Menu.jsp"%>
+        <% Customer customer1 = (Customer) session.getAttribute("customer");
+        %>
         <div class="registration_form">
             <h2>THÔNG TIN KHÁCH HÀNG</h2>
             <!-- Form -->
@@ -26,25 +28,25 @@
                 <input type="hidden" name="action" value="order"/>
                 <div>
                     <label>
-                        <input type="text" name="txtname" placeholder="Họ tên"/>
+                        <input type="text" name="txtname" value="<%=(customer1 != null) ? customer1.getCustomerName() : ""%>" placeholder="Họ tên"/>
                     </label>
                 </div>
                 <div>
                     <label>
-                        <input type="email" name="txtemail" placeholder="Email"/>
+                        <input type="email" name="txtemail" value="<%=(customer1 != null) ? customer1.getEmail(): ""%>" placeholder="Email"/>
                     </label>
                 </div>
                 <div>
                     <label>
-                        <input type="text" name="txtaddress" placeholder="Địa chỉ" required="" />
+                        <input type="text" name="txtaddress" value="<%=(customer1 != null) ? customer1.getAddress(): ""%>" placeholder="Địa chỉ" required="" />
                     </label>
                 </div>
                 <div>
                     <label>
-                        <input type="text" name="txtSoDienThoai" placeholder="Số điện thoại" required="" />
+                        <input type="text" name="txtSoDienThoai" value="<%=(customer1 != null) ? customer1.getPhoneNumber(): ""%>" placeholder="Số điện thoại" required="" />
                     </label>
                 </div>
-                <input type="submit" name="submit" value ="HOÀN TẤT MUA HÀNG"/>
+                <input type="submit" name="submit" value ="HOÀN TẤT MUA HÀNG"/>
             </form>
 
         </div>
