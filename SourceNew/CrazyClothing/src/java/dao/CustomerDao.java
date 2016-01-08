@@ -69,6 +69,36 @@ public class CustomerDao {
 //            return false;
     }
 
+    public String sinhMa(String _matruoc) {
+        String maMoi = "";
+
+        if (_matruoc == null || _matruoc == "") {
+            _matruoc = "100000";
+
+        } else if (_matruoc == "999999") {
+            return null;
+        }
+        maMoi = Integer.toString(Integer.parseInt(_matruoc) + 1);
+        return maMoi;
+    }
+
+    public String GetUserID() throws ClassNotFoundException, SQLException {
+        Connection conn = DBConnect.getSQLServerConnection();
+        String sql = "Select top 1 customerID from Customer order by customerID desc";
+        try {
+            Statement st = null;
+            st = conn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                return rs.getString("customerID");
+            }
+            conn.close();
+        } catch (Exception ex) {
+            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
     public boolean CheckUserInFo(String username) throws ClassNotFoundException, SQLException {
         Connection conn = DBConnect.getSQLServerConnection();
         String sql = "Select username from Customer where username='"+username+"'";
@@ -102,21 +132,6 @@ public class CustomerDao {
             ps.setInt(9, ctm.getStatus());
             ps.executeUpdate();
             System.out.println("<script language='javascript'>alert('Thêm mới thành công!')</script>");
-            conn.close();
-        } catch (Exception ex) {
-            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-    
-    public void EditCustomer(Customer ctm) throws SQLException, ClassNotFoundException {
-        Connection conn = DBConnect.getSQLServerConnection();
-        String sql ="update Customer\n" +
-                    "set customerName = N'"+ctm.getCustomerName()+"', email = '"+ctm.getEmail()+"', [address]=N'"+ctm.getAddress()+"', phoneNumber= '"+ctm.getPhoneNumber()+"' username='"+ctm.getUsername()+"', [password]='"+ctm.getPassword()+"', [rule] = '"+ctm.getRule()+"', [status] ='"+ctm.getStatus()+"' \n" +
-                    "where CustomerID = '"+ctm.getCustomerID()+"'";
-        try {
-            Statement ps = conn.createStatement();
-            int rs =ps.executeUpdate(sql);
             conn.close();
         } catch (Exception ex) {
             Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);

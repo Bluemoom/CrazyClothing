@@ -10,7 +10,7 @@ package model;
  * @author sunny
  */
 public class GroupCloth {
-    private String groupID;
+    public String groupID;
     public String groupName;
     private String image;
     private String groupTop;

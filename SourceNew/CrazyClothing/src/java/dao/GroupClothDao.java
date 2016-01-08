@@ -100,7 +100,8 @@ public class GroupClothDao {
             temp.setGroupName(rs.getString("GroupName"));
             temp.setImage(rs.getString("image"));
             temp.setGroupTop(rs.getString("GroupTop"));           
-         } conn.close();
+         } 
+        conn.close();
         }
         catch(SQLException e)
         {
@@ -108,6 +109,27 @@ public class GroupClothDao {
         }
         return temp;
     }  
+    
+     public GroupCloth GetGroup(String groupname) throws ClassNotFoundException, SQLException {
+        Connection conn = DBConnect.getSQLServerConnection();
+         GroupCloth temp = new GroupCloth();
+        String sql = "Select * from GroupCloth where groupName like'%"+groupname+"%'";
+        try {
+            Statement st = null;
+            st = conn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+              temp.setGroupID(rs.getString("groupID"));
+              temp.setGroupName(rs.getString("groupName"));
+              temp.setImage(rs.getString("image"));
+              temp.setGroupTop(rs.getString("groupTop"));                  
+            }
+            conn.close();
+        } catch (Exception ex) {
+            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return temp;
+    }
     
     public String sinhMa(String _matruoc) {
         String maMoi = "";
@@ -193,8 +215,7 @@ public class GroupClothDao {
          catch (Exception ex)
          {
               Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);         
-         }
-         
+         }        
      }
      
 }

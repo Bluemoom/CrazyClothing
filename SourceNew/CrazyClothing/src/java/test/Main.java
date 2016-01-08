@@ -13,7 +13,7 @@ import dao.CustomerDao;
 import dao.GroupClothDao;
 import java.io.Console;
 import java.sql.SQLException;
-import model.*;
+import model.GroupCloth;
 
 /**
  *
@@ -24,6 +24,7 @@ public class Main {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         GroupClothDao gcDao = new GroupClothDao();
         GroupCloth gr = new GroupCloth(gcDao.sinhMa(gcDao.GetgroupID()),"Khăng Quàng Cổ","","");
+        ClothDao cl = new ClothDao();
 //        System.out.println(gcDao.GetGroupCloth("100001").getGroupName());
 
 //        CustomerDao gcDao = new CustomerDao();
@@ -31,11 +32,7 @@ public class Main {
 //        String password = "chuyenlangthang";
 //        int rs=gcDao.checkLogin(username,password);
 //        int i = 999999;
-          Customer c= new Customer();
-          c = new Customer("100006","Quyên nguyễn","nguyenquyen@facebook.com","Nga Son","01628282682","Sunnymarch","Quyenthuan1714",0,1);
-          CustomerDao cd = new CustomerDao();
-          cd.EditCustomer(c);
-          System.out.println(DBConnect.sinhMa("[Order]", "OrderID"));
+          System.out.println(gcDao.GetGroup("ĐẦM").groupID);
 
     }
 }

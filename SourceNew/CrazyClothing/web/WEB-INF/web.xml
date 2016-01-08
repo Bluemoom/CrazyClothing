@@ -28,6 +28,18 @@
         <servlet-name>EditGroupClothServlet</servlet-name>
         <servlet-class>controller.EditGroupClothServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ClothServlet</servlet-name>
+        <servlet-class>controller.ClothServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteClothServlet</servlet-name>
+        <servlet-class>controller.DeleteClothServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditClothServlet</servlet-name>
+        <servlet-class>controller.EditClothServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CardSeverlet</servlet-name>
         <url-pattern>/CardSeverlet</url-pattern>
@@ -55,6 +67,18 @@
     <servlet-mapping>
         <servlet-name>EditGroupClothServlet</servlet-name>
         <url-pattern>/EditGroupClothServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClothServlet</servlet-name>
+        <url-pattern>/ClothServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteClothServlet</servlet-name>
+        <url-pattern>/DeleteClothServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditClothServlet</servlet-name>
+        <url-pattern>/EditClothServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

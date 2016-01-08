@@ -5,7 +5,6 @@
  */
 package controller;
 
-import connect.DBConnect;
 import dao.CustomerDao;
 import java.io.IOException;
 import java.sql.Date;
@@ -70,7 +69,7 @@ public class RegisterServlet extends HttpServlet {
         request.setAttribute("email", Email);
         try {
             if (username_err.length() == 0 && retypepassword_err.length() == 0) {
-                Customer ctm = new Customer(DBConnect.sinhMa("Customer", "CustomerID"), Name, Email, Address, Phone, Username, Password, 0, 1);
+                Customer ctm = new Customer(ctd.sinhMa(ctd.GetUserID()), Name, Email, Address, Phone, Username, Password, 0, 1);
                 ctd.addUserInfor(ctm);
                 Url = "/index.jsp";
             } else {

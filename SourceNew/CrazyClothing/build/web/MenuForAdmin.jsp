@@ -17,9 +17,9 @@
     </head>
     <body>
        <ul class="megamenu skyblue">
-            <li class="active grid"><a class="color1" href="#">Quản lý đặt hàng</a></li>              
-            <li class="grid"><a class="color2" href="Admin.jsp">Quản lý nhóm sản phẩm</a></li> 
-            <li class="grid"><a class="color2" href="#">Quản lý sản phẩm</a></li> 
+            <li class="active grid"><a class="color1" href="Admin.jsp">Quản lý nhóm sản phẩm</a></li>              
+            <li class="grid"><a class="color2" href="">Quản lý đặt hàng</a></li> 
+            <li class="grid"><a class="color2" href="ClothManagement.jsp">Quản lý sản phẩm</a></li> 
             <li class="grid"><a class="color2" href="#">Quản lý người dùng</a></li> 
         </ul> 
     </body>
