@@ -61,12 +61,6 @@ public class CustomerDao {
 
     public boolean checkPassword(String retypepass, String password) {
         return password.equals(retypepass);
-//        if (password.equals(retypepass))
-//        {
-//            return true;
-//        }
-//        else
-//            return false;
     }
 
     public String sinhMa(String _matruoc) {
@@ -132,6 +126,30 @@ public class CustomerDao {
             ps.setInt(9, ctm.getStatus());
             ps.executeUpdate();
             System.out.println("<script language='javascript'>alert('Thêm mới thành công!')</script>");
+            conn.close();
+        } catch (Exception ex) {
+            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    public void EditCustomer(Customer ctm) throws SQLException, ClassNotFoundException {
+        Connection conn = DBConnect.getSQLServerConnection();
+        String sql ="update Customer\n" +
+                    "set customerName = ?, email = ?, [address]=?, phoneNumber=?, username=?, [password]=?, [rule] = ?, [status] =? \n" +
+                    "where CustomerID = ?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);            
+            ps.setString(1, ctm.getCustomerName());
+            ps.setString(2, ctm.getEmail());
+            ps.setString(3, ctm.getAddress());
+            ps.setString(4, ctm.getPhoneNumber());
+            ps.setString(5, ctm.getUsername());
+            ps.setString(6, ctm.getPassword());
+            ps.setInt(7, ctm.getRule());
+            ps.setInt(8, ctm.getStatus());
+            ps.setString(9, ctm.getCustomerID());
+            ps.executeUpdate();
             conn.close();
         } catch (Exception ex) {
             Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
