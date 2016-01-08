@@ -38,14 +38,14 @@
                     <div class="price-details">
                         <h3>Chi tiết đơn hàng</h3>
                         <span>Tổng tiền</span>
-                        <span class="total1"> <%=nf.format((Double) session.getAttribute("totalPrice"))%> VNĐ </span>
+                        <span class="total1"> <%=(session.getAttribute("totalPrice") == null) ? "0" : (nf.format((Double) session.getAttribute("totalPrice")))%> VNĐ </span>
                         <span>Phí vận chuyển:</span>
                         <span class="total1">0 VNĐ</span>
                         <div class="clearfix"></div>				 
                     </div>	
                     <ul class="total_price">
                         <li class="last_price"> <h4>TỔNG TRẢ</h4></li>	
-                        <li class="last_price"><span><%=nf.format((Double) session.getAttribute("totalPrice"))%> VNĐ</span></li>
+                        <li class="last_price"><span><%=(session.getAttribute("totalPrice") == null) ? "0" : nf.format((Double) session.getAttribute("totalPrice"))%> VNĐ</span></li>
                     </ul>
                     <div class="clearfix"> </div>
                     <div class="btn_form">
@@ -53,9 +53,9 @@
                     </div>
 
                     <div class="clearfix"></div>
-                    
+
                     <div class="total-item">
-                        
+
                     </div>                      
                 </div>             
                 <div class="col-md-9 cart-items">
@@ -86,7 +86,7 @@
                                     <span class="price-new"><%=nf.format(cb.getQuantityBuy() * cb.getCloth().getPrice() - (cb.getQuantityBuy() * cb.getCloth().getPrice() * cb.getCloth().getSale() / 100))%> VNĐ</span>
                                 </div>
                                 <ul class="qty" style="margin-top: 58px">
-                                     <li><p><a href="CartServlet?command=del&clothID=<%=cb.getCloth().getClothID()%>"> Hủy bỏ </a></p></li>							
+                                    <li><p><a href="CartServlet?command=del&clothID=<%=cb.getCloth().getClothID()%>"> Hủy bỏ </a></p></li>							
                                 </ul>
                             </div>
                             <div class="clearfix"></div>   

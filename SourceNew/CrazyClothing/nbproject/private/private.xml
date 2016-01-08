@@ -5,9 +5,12 @@
         <group>
             <file>file:/C:/Users/sunny/Desktop/CrazyClothing/SourceNew/CrazyClothing/src/java/dao/CustomerDao.java</file>
             <file>file:/C:/Users/sunny/Desktop/CrazyClothing/SourceNew/CrazyClothing/src/java/controller/GroupClothServlet.java</file>
+            <file>file:/C:/Users/sunny/Desktop/CrazyClothing/SourceNew/CrazyClothing/web/MenuForAdmin.jsp</file>
+            <file>file:/C:/Users/sunny/Desktop/CrazyClothing/SourceNew/CrazyClothing/web/ClothManagement.jsp</file>
             <file>file:/C:/Users/sunny/Desktop/CrazyClothing/SourceNew/CrazyClothing/src/java/dao/GroupClothDao.java</file>
             <file>file:/C:/Users/sunny/Desktop/CrazyClothing/SourceNew/CrazyClothing/src/java/controller/PayController.java</file>
             <file>file:/C:/Users/sunny/Desktop/CrazyClothing/SourceNew/CrazyClothing/web/OrderManagement.jsp</file>
+            <file>file:/C:/Users/sunny/Desktop/CrazyClothing/SourceNew/CrazyClothing/web/Bag.jsp</file>
             <file>file:/C:/Users/sunny/Desktop/CrazyClothing/SourceNew/CrazyClothing/src/java/dao/OrderDao.java</file>
             <file>file:/C:/Users/sunny/Desktop/CrazyClothing/SourceNew/CrazyClothing/nbproject/build-impl.xml</file>
         </group>
