@@ -8,7 +8,6 @@ package controller;
 import dao.ClothDao;
 import dao.GroupClothDao;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,8 +16,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Cloth;
-import model.GroupCloth;
+import model.*;
 
 /**
  *
@@ -51,7 +49,7 @@ public class ClothServlet extends HttpServlet {
             Logger.getLogger(ClothServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         String clothName = request.getParameter("clothName");
-        String image = request.getParameter("image");
+        String image ="images/"+ request.getParameter("image");
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         String description = request.getParameter("description");
         double price = Double.parseDouble(request.getParameter("price"));

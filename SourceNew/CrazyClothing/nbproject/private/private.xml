@@ -2,6 +2,21 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/sunny/Desktop/CrazyClothing/SourceNew/CrazyClothing/web/ShowByGroup.jsp</file>
+            <file>file:/C:/Users/sunny/Desktop/CrazyClothing/SourceNew/CrazyClothing/web/css/megamenu_1.css</file>
+            <file>file:/C:/Users/sunny/Desktop/CrazyClothing/SourceNew/CrazyClothing/web/ClothManagement.jsp</file>
+            <file>file:/C:/Users/sunny/Desktop/CrazyClothing/SourceNew/CrazyClothing/src/java/controller/ClothServlet.java</file>
+            <file>file:/C:/Users/sunny/Desktop/CrazyClothing/SourceNew/CrazyClothing/src/java/controller/EditClothServlet.java</file>
+            <file>file:/C:/Users/sunny/Desktop/CrazyClothing/SourceNew/CrazyClothing/web/footer.jsp</file>
+            <file>file:/C:/Users/sunny/Desktop/CrazyClothing/SourceNew/CrazyClothing/web/Seach.jsp</file>
+            <file>file:/C:/Users/sunny/Desktop/CrazyClothing/SourceNew/CrazyClothing/web/Nivoslider.jsp</file>
+            <file>file:/C:/Users/sunny/Desktop/CrazyClothing/SourceNew/CrazyClothing/web/EditCloth.jsp</file>
+            <file>file:/C:/Users/sunny/Desktop/CrazyClothing/SourceNew/CrazyClothing/web/header.jsp</file>
+            <file>file:/C:/Users/sunny/Desktop/CrazyClothing/SourceNew/CrazyClothing/web/Menu.jsp</file>
+            <file>file:/C:/Users/sunny/Desktop/CrazyClothing/SourceNew/CrazyClothing/web/specialCloth.jsp</file>
+            <file>file:/C:/Users/sunny/Desktop/CrazyClothing/SourceNew/CrazyClothing/web/EditGroupCloth.jsp</file>
+            <file>file:/C:/Users/sunny/Desktop/CrazyClothing/SourceNew/CrazyClothing/web/index.jsp</file>
+        </group>
     </open-files>
 </project-private>

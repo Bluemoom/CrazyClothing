@@ -24,46 +24,14 @@
     </head>
     <body>
           <div class="arriv">      
-             <div id="beforeNAVMENU">
-            <table>
-                <tr>
-                    <td style="vertical-align:top" class="auto-style1">
-                        <table style="width:250px">                                                    
-                            <tr style="border-color: black; border-width: thin;height: 40px">
-                                <td style="border-color: black; background-color: #e4e4e4; text-align:center; font-weight: bold;" class="auto-style4">
-                                    KHOẢNG GIÁ</td>
-                            </tr>
-                            <tr style="height: 20px"></tr>
-                             <tr>              
-                                <td style="background-color: #e4e4e4;font-size:14px;text-align:left" class="auto-style8">                                                                            
-                                    <div  class="registration_form">
-                                        <form id="registration_form" action="SearchByPriceServlet" method="post">
-                                            <input style="margin-bottom: 10px" type="radio" name="price" value="200000" checked/>   Duoi 200,000<br>
-                                            <input style="margin-bottom: 10px" type="radio" value="500000" name="price" />   200,000 => 500,000<br>
-                                            <input style="margin-bottom: 10px" type="radio" value="1000000" name="price" />   500,000 => 1,000,000<br>
-                                            <input style="margin-bottom: 10px" type="radio" value="2000000" name="price" />   1,000,000 => 2,000,000<br>
-                                            <input style="margin-bottom: 10px" type="radio" value="2100000" name="price" />   Tren 2,000,000<br>
-                                            <div>
-                                                 <input style="float: right;margin-right: 10px" type="submit" value="Tìm kiếm" id="register-submit">
-                                            </div>	
-                                        </form>                                      
-                                        <br />                                                                   
-                                    </div>
-                                </td>
-                            </tr>                 
-                         </table>
-                    </td>
-                    <td style="padding-left:40px;vertical-align:top">
+             <div id="beforeNAVMENU">            
                         <div id="slider" class="nivoSlider">
-                            <img src="images/BACK VENT PENCIL SKIRT.jpg" alt=""/>
-                            <img src="images/BASIC CARDIGAN.jpg" alt=""/>
-                            <img src="images/BASIC SEAMS TOP.jpg" alt=""/>
-                            <img src="images/BELT LONG CARDIGAN.jpg" alt=""/>
-                            <img src="images/BELT PRINTED DRESS.jpg" alt=""/>
+                            <img src="images/685_jean-bella-banner-doanh-nghiep.jpg" alt=""/>
+                            <img src="images/20130910235524_banner_to.jpg" alt=""/>
+                            <img src="images/685_banner-proguide" alt=""/>
+                            <img src="images/4_banner.jpg" alt=""/>
+                            <img src="images/Banner Thoi Trang.jpg" alt=""/>
                         </div>
-                    </td>
-                </tr>
-            </table>
          </div>             
         </div>     
         <script type="text/javascript">

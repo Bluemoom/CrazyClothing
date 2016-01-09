@@ -54,7 +54,7 @@
                                 </div>
                                         <div>
                                     <label>
-                                        Hình ảnh:   <input name="image" type="file" tabindex="4" required>
+                                        Hình ảnh:   <input name="image" type="file" tabindex="4" >
                                     </label>                                  
                                 </div>
                                 <div>

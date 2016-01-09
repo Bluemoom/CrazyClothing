@@ -21,12 +21,12 @@
     </head>
     <body>
         <% Customer customer = (Customer) session.getAttribute("customer");
-         List<ClothBuy> cart1 = (ArrayList<ClothBuy>) session.getAttribute("cart");
+            List<ClothBuy> cart1 = (ArrayList<ClothBuy>) session.getAttribute("cart");
             double tt = 0;
             if (session.getAttribute("totalPrice") != null) {
                 tt = (Double) session.getAttribute("totalPrice");
             }
-            
+
             NumberFormat nf1 = NumberFormat.getInstance();
             nf1.setMinimumIntegerDigits(0);
         %>
@@ -86,7 +86,7 @@
                                 </div>
                                 <div class="cart box_1">
                                     <a href="Bag.jsp">
-                                        <h3> <span class="simpleCart_total">$ <%=nf1.format(tt)%> VNĐ</span> (<span id="simpleCart_quantity" class="simpleCart_quantity"><%=(cart1!=null)?cart1.size():0%></span>  sp)<img src="images/bag.png" alt=""></h3>
+                                        <h3> <span class="simpleCart_total">$ <%=nf1.format(tt)%> VNĐ</span> (<span id="simpleCart_quantity" class="simpleCart_quantity"><%=(cart1 != null) ? cart1.size() : 0%></span>  sp)<img src="images/bag.png" alt=""></h3>
                                     </a>	
                                     <!--                                    <p><a href="javascript:;" class="simpleCart_empty">(empty card)</a></p>-->
                                     <div class="clearfix"> </div>
@@ -107,5 +107,3 @@
                         <div class="clearfix"> </div>
                     </div>
 
-                    </body>
-                    </html>
