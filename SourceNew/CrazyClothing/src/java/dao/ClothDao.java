@@ -198,6 +198,40 @@ public class ClothDao {
         return arr;
     } 
     
+    public ArrayList<Cloth> searchByName(String ClothName) throws ClassNotFoundException
+    {       
+         ArrayList<Cloth> arr = new ArrayList<Cloth>();
+        try {
+            Connection conn = DBConnect.getSQLServerConnection();
+            String query="select * from Cloth where clothName like'%"+ClothName+"%'";
+            Statement st = null;
+            st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while(rs.next())
+            {
+                Cloth cloth = new Cloth();
+                cloth.setClothID(rs.getString("ClothID"));
+                GroupCloth temp = new GroupCloth(rs.getString("GroupClothID"),"","","");
+                cloth.setGroupCloth(temp);
+                cloth.setClothName(rs.getString("ClothName"));
+                cloth.setImage(rs.getString("image"));
+                cloth.setDescription(rs.getString("description"));
+                cloth.setQuantity(rs.getInt("quantity"));
+                cloth.setPrice(rs.getDouble("price"));
+                cloth.setSale(rs.getInt("sale"));
+                cloth.setSatus(rs.getInt("status"));
+                cloth.setNeww(rs.getInt("new"));
+                arr.add(cloth);
+            }
+            conn.close();
+        }
+        catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return arr;
+    } 
+    
+    
     public String sinhMa(String _matruoc) {
         String maMoi = "";
 

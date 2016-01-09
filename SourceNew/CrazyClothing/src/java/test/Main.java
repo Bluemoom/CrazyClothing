@@ -32,7 +32,7 @@ public class Main {
 //        String password = "chuyenlangthang";
 //        int rs=gcDao.checkLogin(username,password);
 //        int i = 999999;
-          System.out.println(gcDao.GetGroup("ĐẦM").groupID);
+          System.out.println(cl.searchByName("A"));
 
     }
 }

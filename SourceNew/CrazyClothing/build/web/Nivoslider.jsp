@@ -38,7 +38,7 @@
                                 <td style="background-color: #e4e4e4;font-size:14px;text-align:left" class="auto-style8">                                                                            
                                     <div  class="registration_form">
                                         <form id="registration_form" action="SearchByPriceServlet" method="post">
-                                            <input style="margin-bottom: 10px" type="radio" name="price" value="200000" />   Duoi 200,000<br>
+                                            <input style="margin-bottom: 10px" type="radio" name="price" value="200000" checked/>   Duoi 200,000<br>
                                             <input style="margin-bottom: 10px" type="radio" value="500000" name="price" />   200,000 => 500,000<br>
                                             <input style="margin-bottom: 10px" type="radio" value="1000000" name="price" />   500,000 => 1,000,000<br>
                                             <input style="margin-bottom: 10px" type="radio" value="2000000" name="price" />   1,000,000 => 2,000,000<br>

@@ -97,8 +97,8 @@
                                 <div class="clearfix"> </div>
                             </div>
                             <div class="search">
-                                <form>
-                                    <input type="text" value="" placeholder="search...">
+                                <form method="post" action="SearchByNameServlet">
+                                    <input type="text" name="clothName" required placeholder="search...">
                                     <input type="submit" value="">
                                 </form>
                             </div>
