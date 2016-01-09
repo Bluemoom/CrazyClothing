@@ -48,6 +48,10 @@
         <servlet-name>CustomerController</servlet-name>
         <servlet-class>controller.CustomerController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchByPriceServlet</servlet-name>
+        <servlet-class>controller.SearchByPriceServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CardSeverlet</servlet-name>
         <url-pattern>/CardSeverlet</url-pattern>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>CustomerController</servlet-name>
         <url-pattern>/CustomerController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchByPriceServlet</servlet-name>
+        <url-pattern>/SearchByPriceServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

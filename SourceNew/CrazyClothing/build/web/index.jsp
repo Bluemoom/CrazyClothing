@@ -20,6 +20,7 @@
     <body>
         <%@include file="header.jsp"%>
         <%@include file="Menu.jsp"%>
+        <%@include file="Nivoslider.jsp" %>
         <div class="special">
             <div class="container">
                 <h4>SẢN PHẨM THEO NHÓM</h4>
