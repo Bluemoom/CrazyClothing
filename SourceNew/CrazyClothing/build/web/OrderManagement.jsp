@@ -17,34 +17,7 @@
         <link href='//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
         <link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
-        <style>
-            table[border="1"] {
-                border-collapse:collapse;
-                font:normal normal 11px Trebuchet,"Trebuchet MS",Arial,Sans-Serif;
-                color:#3366CC;
-            }
-
-            table[border="1"] tr {
-                background:#E1D4C1;
-            }
-
-            table[border="1"] th,
-            table[border="1"] td {
-                vertical-align:top;
-                padding:5px 15px;
-                border:1px solid #fff;
-            }
-
-            table[border="1"] td:nth-child(odd) {
-                background:#F5EDE3;
-            }
-
-            table[border="1"] th {
-                background:#104386;
-                color:#F89605;
-                font-weight:bold;
-            }
-        </style>
+        
     </head>
     <body>
         <%@include file="header.jsp"%>
@@ -54,15 +27,15 @@
             nf.setMinimumIntegerDigits(0);
         %>
         <p style="font-size: 20px; margin-top: 40px;margin-bottom: 40px;text-align: center">QUẢN LÝ ĐƠN ĐẶT HÀNG</p>          
-        <div style ="border: 1px solid #00677C; padding: 20px; border-radius:5px;">
-        <table>
+        <div style ="border: 1px solid #00677C; padding: 30px; border-radius:5px;">
+        <table class="Listt">
                 <tr>
                 <th><p>MÃ HÓA ĐƠN</p></th>
-                <th><p class="thclothid">MÃ KHÁCH HÀNG</p></th>
-                <th><p class="thclothid">THỜI GIAN MUA</p></th>
-                <th><p class="thclothid">TỔNG TIỀN</p></th>
-                <th><p class="thclothid">TRẠNG THÁI</p></th>
-                <th><p class="thclothid">TÙY CHỌN</p></th>
+                <th><p>MÃ KHÁCH HÀNG</p></th>
+                <th><p>THỜI GIAN MUA</p></th>
+                <th><p>TỔNG TIỀN</p></th>
+                <th><p>TRẠNG THÁI</p></th>
+                <th><p>TÙY CHỌN</p></th>
                 </tr>  
                 <%
                     for (Order cl : odd.list()) {

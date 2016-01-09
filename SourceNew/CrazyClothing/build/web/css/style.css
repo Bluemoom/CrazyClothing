@@ -3844,3 +3844,30 @@ a.cpns {
     border-radius: 10px;
     padding: 20px;
 }
+.Listt{
+  border-collapse:collapse;
+  font:normal normal 11px Trebuchet,"Trebuchet MS",Arial,Sans-Serif;
+  color:#3366CC;
+  width: 100%;
+}
+
+.Listt tr {
+  background:#E1D4C1;
+}
+
+.Listt th,
+.Listt td {
+  vertical-align:top;
+  padding:5px 15px;
+  border:1px solid #fff;
+}
+
+.Listt tr:nth-child(even) {
+  background:#F5EDE3;
+}
+
+.Listt th {
+  background:#104386;
+  color:#F89605;
+  font-weight:bold;
+}

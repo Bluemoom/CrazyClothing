@@ -44,6 +44,10 @@
         <servlet-name>PayController</servlet-name>
         <servlet-class>controller.PayController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CustomerController</servlet-name>
+        <servlet-class>controller.CustomerController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CardSeverlet</servlet-name>
         <url-pattern>/CardSeverlet</url-pattern>
@@ -87,6 +91,10 @@
     <servlet-mapping>
         <servlet-name>PayController</servlet-name>
         <url-pattern>/PayController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerController</servlet-name>
+        <url-pattern>/CustomerController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

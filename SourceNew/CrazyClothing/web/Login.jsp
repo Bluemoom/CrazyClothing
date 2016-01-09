@@ -33,7 +33,7 @@
                 </div>
                 <div>
                     <label>
-                        <input type="text" placeholder="password" name="password"/>
+                        <input type="password" placeholder="password" name="password"/>
                     </label>
                 </div>						
                 <div>

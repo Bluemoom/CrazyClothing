@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.*;
@@ -178,5 +179,49 @@ public class CustomerDao {
             Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+    
+    public ArrayList<Customer> list() throws ClassNotFoundException
+    {
+        ArrayList<Customer> arr = new ArrayList<Customer>();
+        try {
+            Connection conn = DBConnect.getSQLServerConnection();
+            String query="select * from Customer where [rule] = 0 or [rule] = 1";
+            Statement st = null;
+            st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while(rs.next())
+            {
+                Customer customer = new Customer();
+                customer.setCustomerID(rs.getString("CustomerID"));               
+                customer.setCustomerName(rs.getString("CustomerName"));
+                customer.setEmail(rs.getString("Email"));
+                customer.setAddress(rs.getString("Address"));
+                customer.setPhoneNumber(rs.getString("PhoneNumber"));
+                customer.setUsername(rs.getString("Username"));
+                customer.setPassword(rs.getString("Password"));
+                customer.setRule(rs.getInt("Rule"));
+                customer.setStatus(rs.getInt("status"));                
+                arr.add(customer);
+            }
+            conn.close();
+        }
+        catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return arr;
+    }
+    
+    public void unpublic(String customerID) throws SQLException, ClassNotFoundException {
+        Connection conn = DBConnect.getSQLServerConnection();
+        String sql = "update [Customer] set [status] = 0 where customerID = ?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, customerID);
+            ps.executeUpdate();
+            conn.close();
+        } catch (Exception ex) {
+            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
