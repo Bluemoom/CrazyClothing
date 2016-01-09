@@ -21,13 +21,18 @@
         <%@include file="header.jsp"%>
         <%@include file="Menu.jsp"%>
         <%@include file="Nivoslider.jsp" %>
+        <%@include file="Seach.jsp" %>
         <div class="special">
             <div class="container">
                 <h4>SẢN PHẨM THEO NHÓM</h4>
                 <div class="specia-top">
                     <ul class="grid_2">
-                        <% ClothDao clothDao = new ClothDao(); %>
-                        <%for (Cloth cloth : clothDao.showSpecialCloth()) {%>
+                        <% ClothDao clothDao = new ClothDao(); 
+                        HttpSession sesstion = request.getSession();            
+                        String querySeach = (session.getAttribute("querySeach")!=null)?(String)session.getAttribute("querySeach"):"";
+                        String query = "select Top 8 * from Cloth where [status] = 1 "+querySeach;
+                        %>
+                        <%for (Cloth cloth : clothDao.list(query)) {%>
                         <li>
                             <a href="ShowDetailCloth.jsp?ClothID=<%=cloth.getClothID()%>"><img src="<%=cloth.getImage()%>" class="img-responsive" alt=""></a>
                             <div class="special-info grid_1 simpleCart_shelfItem">
@@ -38,7 +43,7 @@
                                 <div class="item_add"><span class="item_price"><a href="CartServlet?command=buy&clothID=<%=cloth.getClothID()%>">THÊM VÀO GIỎ</a></span></div>
                             </div>
                         </li>
-                        <% }%>
+                        <% } sesstion.removeAttribute("querySeach"); %>
                     </ul>
                     <div class="clearfix"> </div>
                 </div>

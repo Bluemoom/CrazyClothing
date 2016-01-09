@@ -56,6 +56,10 @@
         <servlet-name>SearchByNameServlet</servlet-name>
         <servlet-class>controller.SearchByNameServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SeachController</servlet-name>
+        <servlet-class>controller.SeachController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CardSeverlet</servlet-name>
         <url-pattern>/CardSeverlet</url-pattern>
@@ -111,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>SearchByNameServlet</servlet-name>
         <url-pattern>/SearchByNameServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SeachController</servlet-name>
+        <url-pattern>/SeachController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

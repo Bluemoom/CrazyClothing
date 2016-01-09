@@ -4,6 +4,7 @@
     Author     : Mr_Dat
 --%>
 
+<%@page import="dao.ClothDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,13 +20,19 @@
     <body>
         <%@include file="header.jsp"%>
         <%@include file="Menu.jsp"%>
+        <%@include file="Seach.jsp"%>
         <div class="special">
             <div class="container">
                 <h4>SẢN PHẨM THEO NHÓM</h4>
                 <div class="specia-top">
                     <ul class="grid_2">
-                        <% GroupClothDao clothDao = new GroupClothDao(); %>
-                        <%for (Cloth cloth : clothDao.showClothByGroup(request.getParameter("groupID"))) {%>
+                        <% ClothDao clothDao = new ClothDao(); 
+                        HttpSession sesstion = request.getSession();            
+                        String querySeach = (session.getAttribute("querySeach")!=null)?(String)session.getAttribute("querySeach"):"";
+                        String groupClothID = (request.getParameter("groupID")!=null)?request.getParameter("groupID"):(String) session.getAttribute("groupIDD");
+                        String query = "select * from Cloth where groupClothID ="+groupClothID+ " "+querySeach;
+                        %>
+                        <%for (Cloth cloth : clothDao.list(query)) {%>
                         <li>
                             <a href="ShowDetailCloth.jsp?ClothID=<%=cloth.getClothID()%>"><img src="<%=cloth.getImage()%>" class="img-responsive" alt=""></a>
                             <div class="special-info grid_1 simpleCart_shelfItem">
@@ -36,7 +43,7 @@
                                 <div class="item_add"><span class="item_price"><a href="CartServlet?command=buy&clothID=<%=cloth.getClothID()%>">THÊM VÀO GIỎ</a></span></div>
                             </div>
                         </li>
-                        <% }%>
+                        <% } sesstion.removeAttribute("querySeach");                        %>
 
                     </ul>
                     <div class="clearfix"> </div>

@@ -22,6 +22,8 @@
         <% GroupClothDao grd = new GroupClothDao(); %>
         <ul class="megamenu skyblue">
             <li class="active grid"><a class="color1" href="index.jsp">Home</a></li>
+            <li class="grid"><a class="color1" href="ShowAllCloth.jsp">TOÀN BỘ</a></li>
+            <li class="grid"><a class="color1" href="ShowSaleCloth.jsp">SẢN PHẨM GIẢM GIÁ</a></li>       
                 <%for (GroupCloth gr : grd.showDanhMuc()) {%>
             <li class="grid"><a class="color2" href="ShowByGroup.jsp?groupID=<%=gr.getGroupID()%>"><%=gr.getGroupName()%></a></li>
                 <% }%>

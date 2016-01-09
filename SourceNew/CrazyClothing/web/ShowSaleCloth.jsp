@@ -1,6 +1,6 @@
 <%-- 
-    Document   : index
-    Created on : Dec 28, 2015, 2:25:11 PM
+    Document   : ShowSaleCloth
+    Created on : Jan 9, 2016, 4:58:39 PM
     Author     : sunny
 --%>
 
@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Home</title>
+        <title>Sale Cloth</title>
         <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
         <link href="css/style.css" rel='stylesheet' type='text/css' />
         <link href='//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
@@ -20,30 +20,28 @@
     <body>
         <%@include file="header.jsp"%>
         <%@include file="Menu.jsp"%>
-        <%@include file="Nivoslider.jsp" %>
         <%@include file="Seach.jsp" %>
         <div class="special">
-            <div class="container">
-                <h4>SẢN PHẨM THEO NHÓM</h4>
+            <div class="container">                
                 <div class="specia-top">
                     <ul class="grid_2">
-                        <% ClothDao clothDao = new ClothDao(); 
+                        <% ClothDao clothDao = new ClothDao();
                         HttpSession sesstion = request.getSession();            
                         String querySeach = (session.getAttribute("querySeach")!=null)?(String)session.getAttribute("querySeach"):"";
-                        String query = "select Top 8 * from Cloth where [status] = 1 "+querySeach;
+                        String query = "select * from Cloth where [status] = 1 and sale > 0 "+querySeach;
                         %>
                         <%for (Cloth cloth : clothDao.list(query)) {%>
                         <li>
                             <a href="ShowDetailCloth.jsp?ClothID=<%=cloth.getClothID()%>"><img src="<%=cloth.getImage()%>" class="img-responsive" alt=""></a>
                             <div class="special-info grid_1 simpleCart_shelfItem">
                                 <h5><%=cloth.getClothName()%></h5>
-                                <div class="item_add"><span class="item_price"><h6> <%=cloth.getPrice()%> VNĐ</h6></span>
+                                <div class="item_add"><span class="item_price"> <h6><%=cloth.getPrice()%>VNĐ</h6></span>
                                     <span class="code">Sales: <%=cloth.getSale()%> %</span>	
                                 </div>
                                 <div class="item_add"><span class="item_price"><a href="CartServlet?command=buy&clothID=<%=cloth.getClothID()%>">THÊM VÀO GIỎ</a></span></div>
                             </div>
                         </li>
-                        <% } sesstion.removeAttribute("querySeach"); %>
+                        <% }sesstion.removeAttribute("querySeach"); %>
                     </ul>
                     <div class="clearfix"> </div>
                 </div>
