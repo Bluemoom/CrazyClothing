@@ -54,7 +54,7 @@
                                 </div>
                                 <div>
                                     <label>
-                                      Nhóm sản phẩm: <select tabindex="2" name="groupCloth">
+                                        Nhóm sản phẩm: <select tabindex="2" name="groupCloth" required>
                                                         <%for (GroupCloth gr : grc.showDanhMuc()) {%>
                                                         <option ><%=gr.getGroupID()%></option>                                                 
                                                         <% }%>
@@ -63,37 +63,37 @@
                                 </div>
                                 <div>
                                     <label>
-                                        <input name="clothName" placeholder="Tên sản phẩm" type="text" tabindex="3">
+                                        <input name="clothName" placeholder="Tên sản phẩm" required type="text" tabindex="3">
                                     </label>                         
                                 </div>
                                         <div>
                                     <label>
-                                        Hình ảnh:   <input name="image" type="file" tabindex="4">
+                                        Hình ảnh:   <input name="image" required type="file" tabindex="4">
                                     </label>                                  
                                 </div>
                                 <div>
                                     <label>
-                                        <input placeholder="Số lượng..."  value="" name="quantity" type="text" tabindex="5" >
+                                        <input placeholder="Số lượng..." required value="" name="quantity" type="text" tabindex="5" >
                                     </label>
                                 </div>	
                                 <div>
                                     <label>
-                                        <input placeholder="Mô tả..."  value="" name="description" type="text" tabindex="6" >
+                                        <input placeholder="Mô tả..."  name="description" type="text" tabindex="6" >
                                     </label>
                                 </div>	
                                 <div>
                                     <label>
-                                        <input placeholder="Giá bán..."  value="" name="price" type="text" tabindex="7" >
+                                        <input placeholder="Giá bán..." required value="" name="price" type="text" tabindex="7" >
                                     </label>
                                 </div>
                                 <div>
                                     <label>
-                                        <input placeholder="Giảm giá..."  value="" name="sale" type="text" tabindex="8" >
+                                        <input placeholder="Giảm giá..." required value="" name="sale" type="text" tabindex="8" >
                                     </label>
                                 </div>
                                 <div>
                                     <label>
-                                        Trạng thái:   <select tabindex="9" name="status">
+                                        Trạng thái:   <select tabindex="9" name="status" required>
                                                         <option>1</option>
                                                         <option>0</option>
                                                       </select>
@@ -101,7 +101,7 @@
                                 </div>
                                 <div>
                                     <label>
-                                        Mới:   <select tabindex="10" name="neww">
+                                        Mới:   <select tabindex="10" name="neww" required>
                                                     <option>1</option>
                                                     <option>0</option>
                                                 </select>
@@ -135,8 +135,8 @@
                    %>
                         <tr>
                             <td><p><%=cl.getClothID().substring(0,6)%>...</p></td>
-                            <td><p style="padding-left: 40px"><%=cl.getGroupCloth().groupID.substring(0,6)%>...</p></td>
-                            <td><p style="padding-left: 40px"><%=cl.getClothName().substring(0,6)%>...</p></td>
+                            <td><p style="padding-left: 40px"><%=cl.getGroupCloth().getGroupID()%>...</p></td>
+                            <td><p style="padding-left: 40px"><%=cl.getClothName().substring(0,3)%>...</p></td>
                             <td><p style="padding-left: 40px"><%=cl.getImage().substring(0,6)%>...</p></td>
                             <td><p style="padding-left: 40px"><%=cl.getQuantity()%></p></td>
                             <td><p style="padding-left: 40px"><%=cl.getDescription()%>...</p></td>
@@ -145,8 +145,7 @@
                             <td><p style="padding-left: 40px"><%=cl.getSatus()%></p></td>
                             <td><p style="padding-left: 40px"><%=cl.getNeww()%></p></td>      
                             <td>
-                                <a style="margin-left: 20px;color: #3300ff" href="EditCloth.jsp?clothID=<%=cl.getClothID()%>">Edit</a>
-                                <a style="margin-left: 20px;color: #3300ff" href="DeleteClothServlet?clothID=<%=cl.getClothID()%>">Delete</a>
+                                <a style="margin-left: 20px;color: #3300ff" href="EditCloth.jsp?clothID=<%=cl.getClothID()%>">Edit</a>                              
                             </td>
                         </tr>
                    <%

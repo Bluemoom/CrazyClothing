@@ -40,7 +40,7 @@
                                 </div>
                                 <div>
                                     <label>
-                                      Nhóm sản phẩm: <select tabindex="2" name="groupCloth">
+                                      Nhóm sản phẩm: <select tabindex="2" name="groupCloth" required>
                                                         <%for (GroupCloth gr : grc.showDanhMuc()) {%>
                                                         <option ><%=gr.getGroupID()%></option>                                                 
                                                         <% }%>
@@ -49,37 +49,37 @@
                                 </div>
                                 <div>
                                     <label>
-                                       Tên sản phẩm: <input name="clothName" value="<%=cl.getClothName()%>" type="text" tabindex="3">
+                                       Tên sản phẩm: <input name="clothName" required value="<%=cl.getClothName()%>" type="text" tabindex="3">
                                     </label>                         
                                 </div>
                                         <div>
                                     <label>
-                                        Hình ảnh:   <input name="image" type="file" tabindex="4">
+                                        Hình ảnh:   <input name="image" type="file" tabindex="4" required>
                                     </label>                                  
                                 </div>
                                 <div>
                                     <label>
-                                        Số lượng: <input placeholder="Số lượng..."  value="<%=cl.getQuantity()%>" name="quantity" type="text" tabindex="5" >
+                                        Số lượng: <input placeholder="Số lượng..." required value="<%=cl.getQuantity()%>" name="quantity" type="text" tabindex="5" >
                                     </label>
                                 </div>	
                                 <div>
                                     <label>
-                                        Chi tiết: <input placeholder="Mô tả..."  value="<%=cl.getDescription()%>" name="description" type="text" tabindex="6" >
+                                        Chi tiết: <input placeholder="Mô tả..."  name="description" type="text" tabindex="6" >
                                     </label>
                                 </div>	
                                 <div>
                                     <label>
-                                        Giá bán: <input placeholder="Giá bán..."  value="<%=cl.getPrice()%>" name="price" type="text" tabindex="7" >
+                                        Giá bán: <input placeholder="Giá bán..." required value="<%=cl.getPrice()%>" name="price" type="text" tabindex="7" >
                                     </label>
                                 </div>
                                 <div>
                                     <label>
-                                        Giảm giá: <input placeholder="Giảm giá..."  value="<%=cl.getSale()%>" name="sale" type="text" tabindex="8" >
+                                        Giảm giá: <input placeholder="Giảm giá..." required value="<%=cl.getSale()%>" name="sale" type="text" tabindex="8" >
                                     </label>
                                 </div>
                                 <div>
                                     <label>
-                                        Trạng thái:   <select tabindex="9" name="status">
+                                        Trạng thái:   <select tabindex="9" name="status" required>
                                                         <option>1</option>
                                                         <option>0</option>
                                                       </select>
@@ -87,7 +87,7 @@
                                 </div>
                                 <div>
                                     <label>
-                                        Mới:   <select tabindex="10" name="neww">
+                                        Mới:   <select tabindex="10" name="neww" required>
                                                     <option>1</option>
                                                     <option>0</option>
                                                 </select>
