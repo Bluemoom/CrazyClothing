@@ -77,5 +77,40 @@ public class OrderDao {
             Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
+     public String getCustomerID(String orderID) throws SQLException, ClassNotFoundException {
+         String customerID = null;
+            try {
+            Connection conn = DBConnect.getSQLServerConnection();
+            String query = "select CustomerID from [Order] where orderID ="+orderID;
+            Statement st = null;
+            st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                customerID  = rs.getString("CustomerID");
+            }
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return customerID;
+     }
+     public double getTotalPrice(String orderID) throws ClassNotFoundException
+     {
+         double money = 0;
+            try {
+            Connection conn = DBConnect.getSQLServerConnection();
+            String query = "select totalMoney from [Order] where orderID ="+orderID;
+            Statement st = null;
+            st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                money  = rs.getDouble("totalMoney");
+            }
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return money;
+     }
 }

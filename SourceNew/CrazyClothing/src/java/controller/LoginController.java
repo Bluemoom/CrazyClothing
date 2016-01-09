@@ -51,7 +51,7 @@ public class LoginController extends HttpServlet {
 
                 rule = ctmDao.checkLogin(username, password);
                 if (rule == 0) {
-                    customer = ctmDao.findById(username, password);
+                    customer = ctmDao.findByAccount(username, password);
                     session.setAttribute("customer", customer);
                     url = "index.jsp";
                 } else if (rule == 1) {

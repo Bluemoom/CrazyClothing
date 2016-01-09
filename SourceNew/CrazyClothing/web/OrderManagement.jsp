@@ -54,7 +54,8 @@
             nf.setMinimumIntegerDigits(0);
         %>
         <p style="font-size: 20px; margin-top: 40px;margin-bottom: 40px;text-align: center">QUẢN LÝ ĐƠN ĐẶT HÀNG</p>          
-            <table>
+        <div style ="border: 1px solid #00677C; padding: 20px; border-radius:5px;">
+        <table>
                 <tr>
                 <th><p>MÃ HÓA ĐƠN</p></th>
                 <th><p class="thclothid">MÃ KHÁCH HÀNG</p></th>
@@ -67,20 +68,21 @@
                     for (Order cl : odd.list()) {
                 %>
                 <tr>
-                    <td><p><%=cl.getOrderID()%>...</p></td>
-                    <td><p style="padding-left: 40px"><%=cl.getCustomerID()%>...</p></td>
-                    <td><p style="padding-left: 40px"><%=cl.getTime()%>...</p></td>
-                    <td><p style="padding-left: 40px"><%=nf.format(cl.getTotalMoney())%>...</p></td>
-                    <td><p style="padding-left: 40px"><%=(cl.getStatus() == 1) ? "Chưa thanh toán" : "Đã thanh toán"%></p></td>
+                    <td><p><%=cl.getOrderID()%></p></td>
+                    <td><p style="padding-left: 40px"><%=cl.getCustomerID()%></p></td>
+                    <td><p style="padding-left: 40px"><%=cl.getTime()%></p></td>
+                    <td><p style="padding-left: 40px"><%=nf.format(cl.getTotalMoney())%></p></td>
+                    <td><p style="padding-left: 40px"><%=(cl.getStatus() == 1) ? "Chưa thanh toán" : ""%></p></td>
                     <td>
-                        <a style="margin-left: 20px;color: #3300ff" href="PayController?action=duyet&orderID=<%=cl.getOrderID()%>">ĐÃ DUYỆT</a>
-                        <a style="margin-left: 20px;color: #3300ff" href="OrderDetailManagement?orderID=<%=cl.getOrderID()%>">XEM CHI TIẾT</a>
+                        
+                        <a style="margin-left: 20px;color: #3300ff" href="OrderDetailManagement.jsp?orderID=<%=cl.getOrderID()%>">XEM CHI TIẾT</a>
                     </td>
                 </tr>
                 <%
                     }
                 %>             
             </table>
+            </div>
             <%@include file="footer.jsp"%>
     </body>
 </html>

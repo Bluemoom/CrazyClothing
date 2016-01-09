@@ -45,7 +45,7 @@ public class RegisterServlet extends HttpServlet {
         String Username = (String) request.getParameter("username");
 
         try {
-            if (ctd.CheckUserInFo(Username)) {
+            if (ctd.checkUserInFo(Username)) {
                 username_err = "Tài khoản đã tồn tại !";
                 session.setAttribute("username_err", username_err);
             }
@@ -69,7 +69,7 @@ public class RegisterServlet extends HttpServlet {
         request.setAttribute("email", Email);
         try {
             if (username_err.length() == 0 && retypepassword_err.length() == 0) {
-                Customer ctm = new Customer(ctd.sinhMa(ctd.GetUserID()), Name, Email, Address, Phone, Username, Password, 0, 1);
+                Customer ctm = new Customer(ctd.sinhMa(ctd.getUserID()), Name, Email, Address, Phone, Username, Password, 0, 1);
                 ctd.addUserInfor(ctm);
                 Url = "/index.jsp";
             } else {

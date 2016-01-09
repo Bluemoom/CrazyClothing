@@ -3838,3 +3838,9 @@ a.cpns {
 .w_content {
   padding: 0;
 }
+.orderDetail {
+    margin-top: 10px;
+    border: 1px solid #B03060;
+    border-radius: 10px;
+    padding: 20px;
+}
